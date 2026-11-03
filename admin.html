@@ -38,9 +38,15 @@
     <div id="studio-section" hidden>
 
       <!-- Head -->
-      <div class="admin-head">
-        <h1>Moderator Studio</h1>
-        <p class="lead">Add or update members, minutes of meetings, and contributor points visually. When done, download or copy the generated data file with one click.</p>
+      <div class="admin-head" style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:16px;">
+        <div>
+          <h1>Moderator Studio</h1>
+          <p class="lead" style="margin-bottom:0;">Add or update members, minutes of meetings, and contributor points visually. When done, download or copy the generated data file with one click.</p>
+        </div>
+        <div style="display:flex; gap:10px; align-items:center;">
+          <span style="font-size:12.5px; color:var(--cream-dim); padding:6px 12px; background:rgba(255,255,255,.05); border-radius:999px; border:1px solid rgba(255,255,255,.1);">Source: <strong style="color:#b9cbef;">assets/data/club-data.js</strong></span>
+          <button type="button" class="btn btn-glass glass btn-sm" id="btn-sync-file" title="Discard browser storage and reload directly from club-data.js file">Reload from file</button>
+        </div>
       </div>
 
       <!-- Navigation Tabs -->
@@ -101,6 +107,11 @@
               <div class="form-group">
                 <label for="m-year">Join Year</label>
                 <input type="number" id="m-year" class="admin-input" value="2026">
+              </div>
+
+              <div class="form-group form-group--full">
+                <label for="m-bio">Bio / Contributions (Pop-up modal text)</label>
+                <input type="text" id="m-bio" class="admin-input" placeholder="e.g. Leading research in deterministic N-body orbital simulations.">
               </div>
 
               <div class="form-group">
@@ -269,19 +280,32 @@
   <!-- STUDIO JAVASCRIPT LOGIC -->
   <script>
     (function () {
-      // Load current or default data
-      var data = window.CELESTA_DATA || {
-        salt: "celesta_astro_2026",
-        members: [],
-        moms: [],
-        alumni: [],
-        leaderboardTiers: [
-          { name: "Supernova", minPoints: 300, icon: "" },
-          { name: "Pulsar", minPoints: 200, icon: "" },
-          { name: "Orbiter", minPoints: 100, icon: "" },
-          { name: "Stargazer", minPoints: 0, icon: "" }
-        ]
-      };
+      // Load current or default data (synced with localStorage for instant reactivity)
+      var data = null;
+      try {
+        var local = localStorage.getItem("celesta_club_data");
+        if (local) {
+          var parsed = JSON.parse(local);
+          if (parsed && Array.isArray(parsed.members) && Array.isArray(parsed.alumni)) {
+            data = parsed;
+          }
+        }
+      } catch (e) {}
+
+      if (!data) {
+        data = window.CELESTA_DATA || {
+          salt: "celesta_astro_2026",
+          members: [],
+          moms: [],
+          alumni: [],
+          leaderboardTiers: [
+            { name: "Supernova", minPoints: 300, icon: "🌟" },
+            { name: "Pulsar", minPoints: 200, icon: "⚡" },
+            { name: "Orbiter", minPoints: 100, icon: "🪐" },
+            { name: "Stargazer", minPoints: 0, icon: "🔭" }
+          ]
+        };
+      }
 
       // Built-in hash helper using WebCrypto
       async function sha256(str, salt) {
@@ -439,6 +463,7 @@
         document.getElementById("m-role").value = m.role;
         document.getElementById("m-tier").value = m.tier || "intern";
         document.getElementById("m-year").value = m.joinYear || 2026;
+        document.getElementById("m-bio").value = m.bio || m.contributions || "";
         document.getElementById("m-rawid").value = "";
 
         if (m.avatar && (m.avatar.includes("def1") || m.avatar.includes("def2"))) {
@@ -459,17 +484,26 @@
       document.getElementById("btn-cancel-member").addEventListener("click", function () {
         document.getElementById("form-member").reset();
         document.getElementById("m-edit-id").value = "";
+        document.getElementById("m-bio").value = "";
         document.getElementById("member-form-title").textContent = "Add / Update Member";
         document.getElementById("btn-cancel-member").hidden = true;
         mCustomWrap.hidden = true;
       });
+
+      function persistData() {
+        try {
+          data.lastUpdated = new Date().toISOString();
+          localStorage.setItem("celesta_club_data", JSON.stringify(data));
+        } catch (e) {}
+        updateCodePreview();
+      }
 
       window.deleteMember = function (id) {
         if (!confirm("Are you sure you want to remove this member?")) return;
         data.members = data.members.filter(m => m.id !== id);
         renderMembers();
         renderLeaderboard();
-        updateCodePreview();
+        persistData();
         toast("Member removed.");
       };
 
@@ -487,7 +521,7 @@
         var role = prompt("Enter Alumni Title/Role for " + m.name + ":", defaultRole);
         if (role === null) return;
 
-        var defaultContrib = "Former " + (m.role || "Lead") + " and key contributor to Celesta initiatives.";
+        var defaultContrib = m.bio || ("Former " + (m.role || "Lead") + " and key contributor to Celesta initiatives.");
         var contributions = prompt("Enter key contributions / achievements for " + m.name + ":", defaultContrib);
         if (contributions === null) return;
 
@@ -514,7 +548,7 @@
 
         renderMembers();
         renderLeaderboard();
-        updateCodePreview();
+        persistData();
         toast(m.name + " moved to Alumni Hall!");
       };
 
@@ -533,7 +567,7 @@
         a.contributions = newContrib.trim();
 
         renderMembers();
-        updateCodePreview();
+        persistData();
         toast(a.name + " alumni details updated!");
       };
 
@@ -554,6 +588,7 @@
             avatar: a.avatar || "assets/img/members/def1.png",
             gender: a.gender || "male",
             joinYear: parseInt((a.tenure || "2025").slice(0, 4), 10) || 2025,
+            bio: a.contributions || (cleanRole + " in Celesta."),
             active: true,
             clubIdHash: a.clubIdHash || "",
             points: 100,
@@ -573,7 +608,7 @@
 
         renderMembers();
         renderLeaderboard();
-        updateCodePreview();
+        persistData();
         toast("Member restored to active team.");
       };
 
@@ -582,7 +617,7 @@
         data.members = data.members.filter(m => m.id !== id);
         if (data.alumni) data.alumni = data.alumni.filter(a => a.id !== id);
         renderMembers();
-        updateCodePreview();
+        persistData();
         toast("Alumni record removed.");
       };
 
@@ -594,6 +629,7 @@
         var role = document.getElementById("m-role").value.trim();
         var tier = document.getElementById("m-tier").value;
         var year = parseInt(document.getElementById("m-year").value, 10) || 2026;
+        var bio = document.getElementById("m-bio").value.trim();
         var rawId = document.getElementById("m-rawid").value.trim();
 
         var avatar = "";
@@ -624,6 +660,7 @@
             existingA.role = role || "Former Contributor";
             existingA.avatar = avatar;
             existingA.gender = mGender.value.includes("2") ? "female" : "male";
+            existingA.contributions = bio || role || "Former Contributor";
             if (rawId) existingA.clubIdHash = hash;
             toast("Alumni record for " + name + " updated!");
           } else {
@@ -635,7 +672,7 @@
               avatar: avatar,
               gender: mGender.value.includes("2") ? "female" : "male",
               clubIdHash: hash,
-              contributions: role || "Former Contributor"
+              contributions: bio || role || "Former Contributor"
             });
             toast("Alumni record for " + name + " added!");
           }
@@ -646,6 +683,7 @@
           existing.tier = tier;
           existing.avatar = avatar;
           existing.joinYear = year;
+          existing.bio = bio || existing.bio || (role + " in Celesta.");
           existing.clubIdHash = hash;
           toast("Member " + name + " updated!");
         } else {
@@ -658,6 +696,7 @@
             avatar: avatar,
             gender: mGender.value.includes("2") ? "female" : "male",
             joinYear: year,
+            bio: bio || (role + " in Celesta, active since " + year + "."),
             active: true,
             clubIdHash: hash,
             points: 100,
@@ -668,12 +707,13 @@
 
         document.getElementById("form-member").reset();
         document.getElementById("m-edit-id").value = "";
+        document.getElementById("m-bio").value = "";
         document.getElementById("btn-cancel-member").hidden = true;
         document.getElementById("member-form-title").textContent = "Add / Update Member";
         mCustomWrap.hidden = true;
         renderMembers();
         renderLeaderboard();
-        updateCodePreview();
+        persistData();
       });
 
       // --- RENDER MoMs ---
@@ -701,7 +741,7 @@
         if (!confirm("Delete this meeting archive?")) return;
         data.moms.splice(idx, 1);
         renderMoMs();
-        updateCodePreview();
+        persistData();
         toast("Meeting minutes removed.");
       };
 
@@ -730,17 +770,17 @@
 
         document.getElementById("form-mom").reset();
         renderMoMs();
-        updateCodePreview();
+        persistData();
         toast("New meeting minutes added!");
       });
 
       // --- RENDER LEADERBOARD ---
       function getTier(pts) {
         var tiers = data.leaderboardTiers || [
-          { name: "Supernova", minPoints: 300, icon: "" },
-          { name: "Pulsar", minPoints: 200, icon: "" },
-          { name: "Orbiter", minPoints: 100, icon: "" },
-          { name: "Stargazer", minPoints: 0, icon: "" }
+          { name: "Supernova", minPoints: 300, icon: "🌟" },
+          { name: "Pulsar", minPoints: 200, icon: "⚡" },
+          { name: "Orbiter", minPoints: 100, icon: "🪐" },
+          { name: "Stargazer", minPoints: 0, icon: "🔭" }
         ];
         return tiers.find(t => pts >= t.minPoints) || tiers[tiers.length - 1];
       }
@@ -777,9 +817,19 @@
         m.tessClassifications = (m.tessClassifications || 0) + count;
         m.points = (m.points || 0) + count;
         renderLeaderboard();
-        updateCodePreview();
+        persistData();
         toast("Awarded +" + count + " TESS credits to " + m.firstName + "!");
       };
+
+      // --- SYNC WITH CLUB-DATA.JS FILE BUTTON ---
+      var btnSync = document.getElementById("btn-sync-file");
+      if (btnSync) {
+        btnSync.addEventListener("click", function () {
+          localStorage.removeItem("celesta_club_data");
+          toast("Local storage cache cleared! Reloading from club-data.js...");
+          setTimeout(function () { location.reload(); }, 400);
+        });
+      }
 
       // --- HASHER TAB ---
       var hasherIn = document.getElementById("hasher-input");
@@ -829,7 +879,7 @@
         renderMembers();
         renderMoMs();
         renderLeaderboard();
-        updateCodePreview();
+        persistData();
       }
     })();
   </script>

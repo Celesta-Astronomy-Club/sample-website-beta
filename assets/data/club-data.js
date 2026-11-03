@@ -1,7 +1,7 @@
 /* ==========================================================================
    CELESTA | Central Club Data Store
    Managed via Moderator Studio (admin.html) or edited directly.
-   Last updated: 2026-11-03T17:58:28.404Z
+   Last updated: 2026-11-03T18:15:00.000Z
    ========================================================================== */
 
 window.CELESTA_DATA = {
@@ -19,7 +19,8 @@ window.CELESTA_DATA = {
       "active": true,
       "clubIdHash": "b04f89c00947857c394fd449b1b9c5e180814fdae89a3a8b0a607e5334af1c43",
       "points": 340,
-      "tessClassifications": 85
+      "tessClassifications": 85,
+      "bio": "Leading research in deterministic N-body orbital simulations and ballistic flyby sensitivity."
     },
     {
       "id": "mrunal-sayam",
@@ -33,7 +34,8 @@ window.CELESTA_DATA = {
       "active": true,
       "clubIdHash": "70e5eebe56d281a5a7cad75f7801ae85fb537b969aa0a6e57e44a82301742bae",
       "points": 290,
-      "tessClassifications": 60
+      "tessClassifications": 60,
+      "bio": "Directing club initiatives, large-scale hackathons, and nationwide student outreach."
     },
     {
       "id": "arnav-venkatesh",
@@ -47,7 +49,8 @@ window.CELESTA_DATA = {
       "active": true,
       "clubIdHash": "b1fb7986fb8f56e7b038d15da85e1d8f81c329d1636815e03d026ad1cb8593c8",
       "points": 320,
-      "tessClassifications": 75
+      "tessClassifications": 75,
+      "bio": "Specializing in computational astrodynamics, trajectory sensitivity models, and research publications."
     },
     {
       "id": "shakthivel-karthik",
@@ -61,7 +64,8 @@ window.CELESTA_DATA = {
       "active": true,
       "clubIdHash": "46f04d9c7bf568df9ef229eb4bf8a395c2aeaa5ff3d94d8cbdf33a69399cb190",
       "points": 260,
-      "tessClassifications": 45
+      "tessClassifications": 45,
+      "bio": "Architecting Celesta's technical platforms, astronomy conversational engines, and web infrastructure."
     },
     {
       "id": "manveer-plaha",
@@ -75,7 +79,8 @@ window.CELESTA_DATA = {
       "active": true,
       "clubIdHash": "9212c40c836ec4cb03b6ba50a316ec5b8c9d09e5306385cfcb222013ce0f90ec",
       "points": 210,
-      "tessClassifications": 30
+      "tessClassifications": 30,
+      "bio": "Broadcasting astronomy insights and managing Celesta's public outreach initiatives."
     },
     {
       "id": "aya-saadaoui",
@@ -89,7 +94,8 @@ window.CELESTA_DATA = {
       "active": true,
       "clubIdHash": "30507e15faec4e3d3680979eaec651b0cf0472e3ea8c7c944118f6d7a4eb31a8",
       "points": 220,
-      "tessClassifications": 35
+      "tessClassifications": 35,
+      "bio": "Connecting international astronomy enthusiasts and producing creative visual science content."
     },
     {
       "id": "nayla-ferreira",
@@ -103,7 +109,8 @@ window.CELESTA_DATA = {
       "active": true,
       "clubIdHash": "cf1518f97cfce5e5f385c88c03c58ceba41bb334208a0cb8bbfbb1e58f0dd876",
       "points": 180,
-      "tessClassifications": 40
+      "tessClassifications": 40,
+      "bio": "Analyzing gravitational flyby geometries and trajectory datasets."
     },
     {
       "id": "hritesh-srivastava",
@@ -117,7 +124,8 @@ window.CELESTA_DATA = {
       "active": true,
       "clubIdHash": "43763ee0055cb57321e0ca65fc36d91bb161e1b123aa12d09797bf6463999914",
       "points": 120,
-      "tessClassifications": 25
+      "tessClassifications": 25,
+      "bio": "Assisting on astrodynamic data pipelines and simulation test suites."
     },
     {
       "id": "ojaswee-upadhyay",
@@ -131,7 +139,8 @@ window.CELESTA_DATA = {
       "active": true,
       "clubIdHash": "46f63435fa108a73b222019489f6fc0c262bf638f382a3ce38be811342ee132f",
       "points": 110,
-      "tessClassifications": 20
+      "tessClassifications": 20,
+      "bio": "Studying transit light curves and participating in candidate exoplanet filtering."
     },
     {
       "id": "somula-reddy",
@@ -145,7 +154,8 @@ window.CELESTA_DATA = {
       "active": true,
       "clubIdHash": "92569116e0e0f31c513ee6382ca251d18f5ae22340277340d3a95843b0c5dd25",
       "points": 115,
-      "tessClassifications": 20
+      "tessClassifications": 20,
+      "bio": "Developing technical documentation and participating in club research initiatives."
     },
     {
       "id": "jharna-saxena",
@@ -159,7 +169,8 @@ window.CELESTA_DATA = {
       "active": true,
       "clubIdHash": "8ef1698a96677fcf52286ec45f22fc8d68962ff4458f797dddae703954f9a0a0",
       "points": 125,
-      "tessClassifications": 25
+      "tessClassifications": 25,
+      "bio": "Processing deep-sky astro-imagery and night sky observational logs."
     },
     {
       "id": "lokesh-saravanan",
@@ -173,7 +184,8 @@ window.CELESTA_DATA = {
       "active": true,
       "clubIdHash": "a1a8ec0ce6da8f121d5c22c0693510c4f826629adbc018047970ba749622d10c",
       "points": 105,
-      "tessClassifications": 15
+      "tessClassifications": 15,
+      "bio": "Engineering Python scripts and tools for orbit visualization."
     },
     {
       "id": "shashank-shekhar",
@@ -187,7 +199,8 @@ window.CELESTA_DATA = {
       "active": true,
       "clubIdHash": "8805f778a48722b51336c57fc9957fc908a8a3a2d5e2365d648b2dd29d899538",
       "points": 130,
-      "tessClassifications": 30
+      "tessClassifications": 30,
+      "bio": "Applying machine learning algorithms to photometric time-series exoplanet data."
     },
     {
       "id": "prathik-arunkumar",
@@ -201,7 +214,8 @@ window.CELESTA_DATA = {
       "active": true,
       "clubIdHash": "7b4748db60aa1a26cf03b9f36f6d638ba49cbbe2f8021c3fa6972288009be35f",
       "points": 100,
-      "tessClassifications": 15
+      "tessClassifications": 15,
+      "bio": "Cross-validating simulated planetary ephemerides and research benchmarks."
     },
     {
       "id": "madhav-vashistha",
@@ -215,7 +229,8 @@ window.CELESTA_DATA = {
       "active": true,
       "clubIdHash": "6c9c614399e52ceba4a1a512217c918f6fa1e1fcab5e361259ba2e5ea7553b3d",
       "points": 110,
-      "tessClassifications": 20
+      "tessClassifications": 20,
+      "bio": "Testing celestial dynamics algorithms and compiling observational archives."
     }
   ],
   "moms": [
