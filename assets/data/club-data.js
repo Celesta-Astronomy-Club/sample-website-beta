@@ -1,3 +1,9 @@
+/* ==========================================================================
+   CELESTA | Central Club Data Store
+   Managed via Moderator Studio (admin.html) or edited directly.
+   Last updated: 2026-11-03T17:58:28.404Z
+   ========================================================================== */
+
 window.CELESTA_DATA = {
   "salt": "celesta_astro_2026",
   "members": [
@@ -285,28 +291,38 @@ window.CELESTA_DATA = {
       "gender": "female",
       "clubIdHash": "32675688a44b9b003a2254359ae2c676239feff02f45ea05537617c09d57a268",
       "contributions": "Stellarium Guidance, Observational Astronomy, and Celesta Workshop Day 1 speaker."
+    },
+    {
+      "id": "aditya-banerjee",
+      "name": "Aditya Banerjee",
+      "role": "Ex. Research Team Intern",
+      "tenure": "2025–2026",
+      "avatar": "assets/img/members/def1.png",
+      "gender": "male",
+      "clubIdHash": "02a0e7070ac8063d8adce7d7a544a89312eb562dbc2b7e74f6587d126cae5457",
+      "contributions": "Ex. Research Team Intern"
     }
   ],
   "leaderboardTiers": [
     {
       "name": "Supernova",
       "minPoints": 300,
-      "icon": "\ud83c\udf1f"
+      "icon": "🌟"
     },
     {
       "name": "Pulsar",
       "minPoints": 200,
-      "icon": "\u26a1"
+      "icon": "⚡"
     },
     {
       "name": "Orbiter",
       "minPoints": 100,
-      "icon": "\ud83e\ude90"
+      "icon": "🪐"
     },
     {
       "name": "Stargazer",
       "minPoints": 0,
-      "icon": "\ud83d\udd2d"
+      "icon": "🔭"
     }
   ]
 };
