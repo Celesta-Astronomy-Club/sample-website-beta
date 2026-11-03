@@ -1,3 +1,9 @@
+/* ==========================================================================
+   CELESTA | Central Club Data Store
+   Managed via Moderator Studio (admin.html) or edited directly.
+   Last updated: 2026-11-03T17:27:01.215Z
+   ========================================================================== */
+
 window.CELESTA_DATA = {
   "salt": "celesta_astro_2026",
   "members": [
@@ -103,12 +109,12 @@ window.CELESTA_DATA = {
       "id": "samritha-k",
       "name": "Samritha K",
       "firstName": "Samritha",
-      "role": "Member",
-      "tier": "member",
+      "role": "Ex. Social Media Lead",
+      "tier": "intern",
       "avatar": "assets/img/members/def2.png",
       "gender": "female",
       "joinYear": 2025,
-      "active": true,
+      "active": false,
       "clubIdHash": "32675688a44b9b003a2254359ae2c676239feff02f45ea05537617c09d57a268",
       "points": 160,
       "tessClassifications": 30
@@ -285,7 +291,7 @@ window.CELESTA_DATA = {
       "id": "harsh-agrawal",
       "name": "Harsh Agrawal",
       "role": "Co-Author & Contributor",
-      "tenure": "2025\u20132026",
+      "tenure": "2025–2026",
       "avatar": "assets/img/members/def1.png",
       "gender": "male",
       "contributions": "Contributed to trajectory analysis and co-authored the Jupiter ballistic gravity assist preprint."
@@ -295,22 +301,22 @@ window.CELESTA_DATA = {
     {
       "name": "Supernova",
       "minPoints": 300,
-      "icon": "\ud83c\udf1f"
+      "icon": "🌟"
     },
     {
       "name": "Pulsar",
       "minPoints": 200,
-      "icon": "\u26a1"
+      "icon": "⚡"
     },
     {
       "name": "Orbiter",
       "minPoints": 100,
-      "icon": "\ud83e\ude90"
+      "icon": "🪐"
     },
     {
       "name": "Stargazer",
       "minPoints": 0,
-      "icon": "\ud83d\udd2d"
+      "icon": "🔭"
     }
   ]
 };
