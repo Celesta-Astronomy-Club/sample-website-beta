@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Moderator Studio | Celesta</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#03060d">
+
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/admin.css">
+
+  <script src="assets/data/club-data.js"></script>
+  <script src="assets/js/site.js" defer></script>
+</head>
+
+<body data-page="admin">
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- Shared Header -->
+  <header data-layout="header"></header>
+
+  <main id="main" class="admin-wrap">
+
+    <!-- ===== PASSCODE GATE ===== -->
+    <section id="gate-section" class="admin-gate glass spot">
+      <h2>Moderator Studio</h2>
+      <p>Enter any Lead Club ID or the moderator passkey to manage club members, MoMs, and leaderboard points.</p>
+      <form id="gate-form" style="display:flex; flex-direction:column; gap:14px;">
+        <input type="password" id="gate-key" class="admin-input" placeholder="Enter Lead Passkey / Club ID" required autocomplete="current-password">
+        <button type="submit" class="btn btn-primary">Enter Studio</button>
+        <p id="gate-err" style="color:#ff8585; font-size:13.5px; margin:0;" hidden>Incorrect passkey. Please try again.</p>
+      </form>
+    </section>
+
+    <!-- ===== STUDIO CONTENT (HIDDEN UNTIL UNLOCKED) ===== -->
+    <div id="studio-section" hidden>
+
+      <!-- Head -->
+      <div class="admin-head">
+        <h1>Moderator Studio</h1>
+        <p class="lead">Add or update members, minutes of meetings, and contributor points visually. When done, download or copy the generated data file with one click.</p>
+      </div>
+
+      <!-- Navigation Tabs -->
+      <nav class="admin-tabs glass spot" aria-label="Studio Tabs">
+        <button type="button" class="admin-tab is-active" data-tab="members">Members & Roles</button>
+        <button type="button" class="admin-tab" data-tab="mom">Minutes of Meetings</button>
+        <button type="button" class="admin-tab" data-tab="leaderboard">Leaderboard & Credits</button>
+        <button type="button" class="admin-tab" data-tab="hasher">Club ID Hasher</button>
+        <button type="button" class="admin-tab" data-tab="export">Export & Deploy</button>
+      </nav>
+
+      <!-- ================= TAB 1: MEMBERS ================= -->
+      <section id="tab-members" class="admin-panel is-active">
+        
+        <!-- Add Member Form -->
+        <div class="admin-box glass spot">
+          <h2 id="member-form-title">Add / Update Member</h2>
+          <p class="admin-box-sub">Add a new member or intern, assign roles, and generate an encrypted Club ID.</p>
+
+          <form id="form-member">
+            <input type="hidden" id="m-edit-id" value="">
+            
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="m-name">Full Name *</label>
+                <input type="text" id="m-name" class="admin-input" placeholder="e.g. Jane Doe" required>
+              </div>
+
+              <div class="form-group">
+                <label for="m-role">Role Title *</label>
+                <input type="text" id="m-role" class="admin-input" placeholder="e.g. Technical Lead or Intern" required>
+              </div>
+
+              <div class="form-group">
+                <label for="m-tier">Tier *</label>
+                <select id="m-tier" class="admin-input">
+                  <option value="lead">Lead (Gold)</option>
+                  <option value="member">Member (Silver)</option>
+                  <option value="intern" selected>Intern (Bronze)</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="m-gender">Avatar Icon / Gender</label>
+                <select id="m-gender" class="admin-input">
+                  <option value="def1.png">Default Male Avatar (def1.png)</option>
+                  <option value="def2.png">Default Female Avatar (def2.png)</option>
+                  <option value="custom">Custom Image Path...</option>
+                </select>
+              </div>
+
+              <div class="form-group form-group--full" id="m-custom-avatar-wrap" hidden>
+                <label for="m-avatar">Custom Image Path</label>
+                <input type="text" id="m-avatar" class="admin-input" placeholder="assets/img/members/photo.jpeg">
+              </div>
+
+              <div class="form-group">
+                <label for="m-year">Join Year</label>
+                <input type="number" id="m-year" class="admin-input" value="2026">
+              </div>
+
+              <div class="form-group">
+                <label for="m-rawid">New Club ID (plain text — will be automatically hashed)</label>
+                <input type="text" id="m-rawid" class="admin-input" placeholder="e.g. JaneDoe2026 (Leave blank to keep existing)">
+              </div>
+            </div>
+
+            <div style="margin-top:22px; display:flex; gap:12px; align-items:center;">
+              <button type="submit" class="btn btn-primary" id="btn-save-member">Save Member</button>
+              <button type="button" class="btn btn-glass glass" id="btn-cancel-member" hidden>Cancel Edit</button>
+            </div>
+          </form>
+        </div>
+
+        <!-- Active Members List -->
+        <div class="admin-box glass spot">
+          <h2>Active Team (<span id="count-active">0</span>)</h2>
+          <p class="admin-box-sub">Click 'Edit' to update details or role, or 'Move to Alumni' when a tenure ends.</p>
+          <div id="list-active-members" class="admin-list"></div>
+        </div>
+
+        <!-- Alumni Members List -->
+        <div class="admin-box glass spot">
+          <h2>Alumni Hall (<span id="count-alumni">0</span>)</h2>
+          <p class="admin-box-sub">Past members retained for credentials and contribution proof.</p>
+          <div id="list-alumni-members" class="admin-list"></div>
+        </div>
+      </section>
+
+
+      <!-- ================= TAB 2: MINUTES OF MEETINGS (MoM) ================= -->
+      <section id="tab-mom" class="admin-panel">
+        <div class="admin-box glass spot">
+          <h2>Publish Minutes of Meeting (MoM)</h2>
+          <p class="admin-box-sub">Record official meeting outcomes, attendees, agendas, and action items.</p>
+
+          <form id="form-mom">
+            <div class="form-grid">
+              <div class="form-group form-group--full">
+                <label for="mom-title">Meeting Title *</label>
+                <input type="text" id="mom-title" class="admin-input" placeholder="e.g. Sprint Review: Research Paper & Event Roadmap" required>
+              </div>
+
+              <div class="form-group">
+                <label for="mom-date">Date *</label>
+                <input type="text" id="mom-date" class="admin-input" placeholder="e.g. November 3, 2026" required>
+              </div>
+
+              <div class="form-group">
+                <label for="mom-attendees">Attendees (comma-separated)</label>
+                <input type="text" id="mom-attendees" class="admin-input" placeholder="e.g. Aradhya, Arnav, Mrunal, Shakthivel">
+              </div>
+
+              <div class="form-group form-group--full">
+                <label for="mom-agenda">Agenda & Objectives</label>
+                <textarea id="mom-agenda" class="admin-input" placeholder="Summary of what was discussed..."></textarea>
+              </div>
+
+              <div class="form-group form-group--full">
+                <label for="mom-decisions">Key Decisions Made</label>
+                <textarea id="mom-decisions" class="admin-input" placeholder="Official decisions made during the meeting..."></textarea>
+              </div>
+
+              <div class="form-group form-group--full">
+                <label for="mom-actions">Action Items (1 per line, format: Task | Assignee)</label>
+                <textarea id="mom-actions" class="admin-input" placeholder="Deploy Zenodo preprint link | Arnav&#10;Prepare next workshop announcement | Manveer"></textarea>
+              </div>
+            </div>
+
+            <div style="margin-top:22px;">
+              <button type="submit" class="btn btn-primary">Add Minutes of Meeting</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="admin-box glass spot">
+          <h2>Published Meeting Archives (<span id="count-moms">0</span>)</h2>
+          <div id="list-moms" class="admin-list"></div>
+        </div>
+      </section>
+
+
+      <!-- ================= TAB 3: LEADERBOARD ================= -->
+      <section id="tab-leaderboard" class="admin-panel">
+        <div class="admin-box glass spot">
+          <h2>Citizen Science & Leaderboard Manager</h2>
+          <p class="admin-box-sub">Quickly award points and log Planet Hunters TESS classifications for members.</p>
+
+          <div class="admin-table-wrap">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Rank & Member</th>
+                  <th>Tier</th>
+                  <th>TESS Classifications</th>
+                  <th>Points</th>
+                  <th>Quick Award</th>
+                </tr>
+              </thead>
+              <tbody id="table-leaderboard-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ================= TAB 4: CLUB ID HASHER ================= -->
+      <section id="tab-hasher" class="admin-panel">
+        <div class="admin-box glass spot">
+          <h2>Club ID Salted Hasher</h2>
+          <p class="admin-box-sub">Generate one-way SHA-256 hashes using Celesta's active salt (<code id="disp-salt">celesta_astro_2026</code>) so raw member passwords never appear in source code.</p>
+
+          <div class="form-group form-group--full">
+            <label for="hasher-input">Raw Passphrase / Member ID</label>
+            <input type="text" id="hasher-input" class="admin-input" placeholder="Type an ID here, e.g. ArnavVenkatesh789">
+          </div>
+
+          <div style="margin-top:20px;">
+            <label style="font-size:13.5px; color:var(--cream-faint);">Generated Salted SHA-256 Hash:</label>
+            <div style="display:flex; gap:10px; margin-top:8px;">
+              <input type="text" id="hasher-output" class="admin-input" readonly placeholder="Output will appear here...">
+              <button type="button" class="btn btn-primary" id="btn-copy-hash">Copy Hash</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- ================= TAB 5: EXPORT & DEPLOY ================= -->
+      <section id="tab-export" class="admin-panel">
+        <div class="admin-box glass spot">
+          <h2>Export & Deploy Changes</h2>
+          <p class="admin-box-sub">All additions and edits above are currently staged in memory. Deploy them to your website in seconds:</p>
+
+          <div style="display:flex; flex-wrap:wrap; gap:14px; margin-bottom:24px;">
+            <button type="button" class="btn btn-primary" id="btn-download-data" style="background:#27ae60; border-color:#2ecc71;">
+              Download updated club-data.js
+            </button>
+            <button type="button" class="btn btn-glass glass" id="btn-copy-data">
+              Copy Code to Clipboard
+            </button>
+          </div>
+
+          <div class="admin-box glass" style="padding:18px 22px; margin-bottom:20px; border-radius:18px;">
+            <p style="margin:0; font-size:14.5px; color:var(--cream);">
+              <strong>Where to save:</strong> Place the downloaded file into <code style="color:#b9cbef;">assets/data/club-data.js</code> in your workspace or GitHub repo. Commit the file and GitHub Pages will deploy it live!
+            </p>
+          </div>
+
+          <label style="font-size:13.5px; color:var(--cream-faint); margin-bottom:8px; display:block;">Live Preview of <code style="color:#b9cbef;">club-data.js</code>:</label>
+          <pre id="code-output" class="code-preview"></pre>
+        </div>
+      </section>
+
+    </div>
+
+  </main>
+
+  <!-- Shared Footer -->
+  <footer data-layout="footer"></footer>
+
+  <!-- Notification Toast -->
+  <div id="admin-toast" class="admin-toast" role="status" aria-live="polite"></div>
+
+  <!-- STUDIO JAVASCRIPT LOGIC -->
+  <script>
+    (function () {
+      // Load current or default data
+      var data = window.CELESTA_DATA || {
+        salt: "celesta_astro_2026",
+        members: [],
+        moms: [],
+        alumni: [],
+        leaderboardTiers: [
+          { name: "Supernova", minPoints: 300, icon: "" },
+          { name: "Pulsar", minPoints: 200, icon: "" },
+          { name: "Orbiter", minPoints: 100, icon: "" },
+          { name: "Stargazer", minPoints: 0, icon: "" }
+        ]
+      };
+
+      // Built-in hash helper using WebCrypto
+      async function sha256(str, salt) {
+        var text = (str || "").trim().toLowerCase() + (salt || data.salt || "celesta_astro_2026");
+        var buf = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(text));
+        return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+      }
+
+      function toast(msg) {
+        var el = document.getElementById("admin-toast");
+        el.textContent = msg;
+        el.classList.add("is-shown");
+        setTimeout(function () { el.classList.remove("is-shown"); }, 2800);
+      }
+
+      // --- AUTH GATE ---
+      var gateSection = document.getElementById("gate-section");
+      var studioSection = document.getElementById("studio-section");
+      var gateForm = document.getElementById("gate-form");
+      var gateKey = document.getElementById("gate-key");
+      var gateErr = document.getElementById("gate-err");
+
+      function unlockStudio() {
+        gateSection.hidden = true;
+        studioSection.hidden = false;
+        renderAll();
+      }
+
+      if (sessionStorage.getItem("celesta-admin-auth") === "true") {
+        unlockStudio();
+      }
+
+      gateForm.addEventListener("submit", async function (e) {
+        e.preventDefault();
+        var raw = gateKey.value.trim();
+        if (!raw) return;
+
+        // Master passcode or matches any lead hash
+        var hash = await sha256(raw, data.salt);
+        var isLead = data.members.some(m => m.tier === "lead" && m.clubIdHash === hash);
+        var isMaster = (raw === "celestalead2026" || raw.toLowerCase() === "celesta2026" || hash === "b04f89c00947857c394fd449b1b9c5e180814fdae89a3a8b0a607e5334af1c43");
+
+        if (isLead || isMaster) {
+          sessionStorage.setItem("celesta-admin-auth", "true");
+          gateErr.hidden = true;
+          unlockStudio();
+        } else {
+          gateErr.hidden = false;
+          gateKey.focus();
+        }
+      });
+
+      // --- TABS ---
+      var tabs = document.querySelectorAll(".admin-tab");
+      var panels = document.querySelectorAll(".admin-panel");
+      tabs.forEach(function (tab) {
+        tab.addEventListener("click", function () {
+          tabs.forEach(t => t.classList.remove("is-active"));
+          panels.forEach(p => p.classList.remove("is-active"));
+          tab.classList.add("is-active");
+          var target = document.getElementById("tab-" + tab.dataset.tab);
+          if (target) target.classList.add("is-active");
+          if (tab.dataset.tab === "export") updateCodePreview();
+        });
+      });
+
+      // --- AVATAR SELECTOR ---
+      var mGender = document.getElementById("m-gender");
+      var mCustomWrap = document.getElementById("m-custom-avatar-wrap");
+      var mAvatar = document.getElementById("m-avatar");
+      mGender.addEventListener("change", function () {
+        mCustomWrap.hidden = mGender.value !== "custom";
+      });
+
+      // --- RENDER MEMBERS ---
+      function renderMembers() {
+        var activeList = document.getElementById("list-active-members");
+        var alumniList = document.getElementById("list-alumni-members");
+        var activeMembers = data.members.filter(m => m.active !== false);
+        var alumniMembers = data.members.filter(m => m.active === false).concat(data.alumni || []);
+
+        document.getElementById("count-active").textContent = activeMembers.length;
+        document.getElementById("count-alumni").textContent = alumniMembers.length;
+
+        // Active
+        activeList.innerHTML = activeMembers.map(m => `
+          <div class="admin-item">
+            <div class="admin-item-info">
+              <img src="${m.avatar || 'assets/img/members/def1.png'}" alt="${m.name}" class="admin-item-avatar">
+              <div>
+                <p class="admin-item-name">${m.name} <span class="badge badge--${m.tier === 'lead' ? 'gold' : m.tier === 'member' ? 'silver' : 'bronze'}">${m.role}</span></p>
+                <div class="admin-item-meta">
+                  <span>Joined ${m.joinYear || 2025}</span>
+                </div>
+              </div>
+            </div>
+            <div class="admin-item-actions">
+              <button type="button" class="btn btn-glass glass btn-sm" onclick="editMember('${m.id}')">Edit</button>
+              <button type="button" class="btn btn-glass glass btn-sm" onclick="toggleAlumni('${m.id}')">To Alumni</button>
+              <button type="button" class="btn btn-glass glass btn-sm" style="color:#ff8585;" onclick="deleteMember('${m.id}')">Delete</button>
+            </div>
+          </div>
+        `).join("");
+
+        // Alumni
+        alumniList.innerHTML = alumniMembers.length ? alumniMembers.map(a => `
+          <div class="admin-item">
+            <div class="admin-item-info">
+              <img src="${a.avatar || 'assets/img/members/def1.png'}" alt="${a.name}" class="admin-item-avatar">
+              <div>
+                <p class="admin-item-name">${a.name} <span class="badge badge--bronze">Alumni</span></p>
+                <div class="admin-item-meta">
+                  <span>${a.tenure || 'Former Contributor'}</span>
+                  ${a.contributions ? `<span>— ${a.contributions}</span>` : ''}
+                </div>
+              </div>
+            </div>
+            <div class="admin-item-actions">
+              <button type="button" class="btn btn-glass glass btn-sm" onclick="restoreMember('${a.id}')">Make Active</button>
+              <button type="button" class="btn btn-glass glass btn-sm" style="color:#ff8585;" onclick="deleteAlumni('${a.id}')">Delete</button>
+            </div>
+          </div>
+        `).join("") : '<p style="color:var(--cream-faint); margin:0; padding:12px 0;">No alumni archived yet.</p>';
+      }
+
+      // Member CRUD exposed to window for inline onclick handlers
+      window.editMember = function (id) {
+        var m = data.members.find(x => x.id === id);
+        if (!m) return;
+        document.getElementById("m-edit-id").value = m.id;
+        document.getElementById("m-name").value = m.name;
+        document.getElementById("m-role").value = m.role;
+        document.getElementById("m-tier").value = m.tier || "intern";
+        document.getElementById("m-year").value = m.joinYear || 2026;
+        document.getElementById("m-rawid").value = "";
+
+        if (m.avatar && (m.avatar.includes("def1") || m.avatar.includes("def2"))) {
+          mGender.value = m.avatar.includes("def1") ? "def1.png" : "def2.png";
+          mCustomWrap.hidden = true;
+        } else {
+          mGender.value = "custom";
+          mCustomWrap.hidden = false;
+          mAvatar.value = m.avatar || "";
+        }
+
+        document.getElementById("member-form-title").textContent = "Update " + m.name;
+        document.getElementById("btn-cancel-member").hidden = false;
+        document.getElementById("m-name").focus();
+        window.scrollTo({ top: document.getElementById("form-member").offsetTop - 80, behavior: "smooth" });
+      };
+
+      document.getElementById("btn-cancel-member").addEventListener("click", function () {
+        document.getElementById("form-member").reset();
+        document.getElementById("m-edit-id").value = "";
+        document.getElementById("member-form-title").textContent = "Add / Update Member";
+        document.getElementById("btn-cancel-member").hidden = true;
+        mCustomWrap.hidden = true;
+      });
+
+      window.deleteMember = function (id) {
+        if (!confirm("Are you sure you want to remove this member?")) return;
+        data.members = data.members.filter(m => m.id !== id);
+        renderMembers();
+        renderLeaderboard();
+        toast("Member removed.");
+      };
+
+      window.toggleAlumni = function (id) {
+        var m = data.members.find(x => x.id === id);
+        if (!m) return;
+        m.active = false;
+        renderMembers();
+        toast(m.name + " moved to Alumni.");
+      };
+
+      window.restoreMember = function (id) {
+        var m = data.members.find(x => x.id === id);
+        if (m) {
+          m.active = true;
+        } else {
+          var aIdx = (data.alumni || []).findIndex(x => x.id === id);
+          if (aIdx >= 0) {
+            var a = data.alumni.splice(aIdx, 1)[0];
+            data.members.push({
+              id: a.id,
+              name: a.name,
+              firstName: a.name.split(" ")[0],
+              role: a.role || "Member",
+              tier: "member",
+              avatar: a.avatar || "assets/img/members/def1.png",
+              active: true,
+              joinYear: 2025,
+              points: 100,
+              tessClassifications: 20
+            });
+          }
+        }
+        renderMembers();
+        toast("Member restored to active team.");
+      };
+
+      window.deleteAlumni = function (id) {
+        if (!confirm("Delete this alumni record?")) return;
+        data.members = data.members.filter(m => m.id !== id);
+        if (data.alumni) data.alumni = data.alumni.filter(a => a.id !== id);
+        renderMembers();
+        toast("Alumni record removed.");
+      };
+
+      // Save Member Form
+      document.getElementById("form-member").addEventListener("submit", async function (e) {
+        e.preventDefault();
+        var editId = document.getElementById("m-edit-id").value;
+        var name = document.getElementById("m-name").value.trim();
+        var role = document.getElementById("m-role").value.trim();
+        var tier = document.getElementById("m-tier").value;
+        var year = parseInt(document.getElementById("m-year").value, 10) || 2026;
+        var rawId = document.getElementById("m-rawid").value.trim();
+
+        var avatar = "";
+        if (mGender.value === "custom") {
+          avatar = mAvatar.value.trim() || "assets/img/members/def1.png";
+        } else {
+          avatar = "assets/img/members/" + mGender.value;
+        }
+
+        var memberId = editId || name.toLowerCase().replace(/[^a-z0-9]/g, "-").replace(/-+/g, "-");
+
+        var existing = data.members.find(m => m.id === memberId);
+        var hash = existing ? existing.clubIdHash : "";
+        if (rawId) {
+          hash = await sha256(rawId, data.salt);
+        } else if (!hash) {
+          hash = await sha256(name.replace(/\s+/g, "") + year, data.salt);
+        }
+
+        if (existing) {
+          existing.name = name;
+          existing.firstName = name.split(" ")[0];
+          existing.role = role;
+          existing.tier = tier;
+          existing.avatar = avatar;
+          existing.joinYear = year;
+          existing.clubIdHash = hash;
+          toast("Member " + name + " updated!");
+        } else {
+          data.members.push({
+            id: memberId,
+            name: name,
+            firstName: name.split(" ")[0],
+            role: role,
+            tier: tier,
+            avatar: avatar,
+            gender: mGender.value.includes("2") ? "female" : "male",
+            joinYear: year,
+            active: true,
+            clubIdHash: hash,
+            points: 100,
+            tessClassifications: 10
+          });
+          toast("New member " + name + " added!");
+        }
+
+        document.getElementById("form-member").reset();
+        document.getElementById("m-edit-id").value = "";
+        document.getElementById("btn-cancel-member").hidden = true;
+        document.getElementById("member-form-title").textContent = "Add / Update Member";
+        mCustomWrap.hidden = true;
+        renderMembers();
+        renderLeaderboard();
+      });
+
+      // --- RENDER MoMs ---
+      function renderMoMs() {
+        var list = document.getElementById("list-moms");
+        document.getElementById("count-moms").textContent = data.moms.length;
+
+        list.innerHTML = data.moms.map((mom, idx) => `
+          <div class="admin-item" style="flex-direction:column; align-items:flex-start; gap:10px;">
+            <div style="display:flex; justify-content:space-between; width:100%; align-items:center;">
+              <h3 style="margin:0; font-size:17px; color:var(--cream);">${mom.title}</h3>
+              <span style="font-size:13.5px; color:var(--cream-faint);">${mom.date}</span>
+            </div>
+            <p style="margin:0; font-size:14px; color:var(--cream-dim);"><strong>Attendees:</strong> ${(mom.attendees || []).join(", ")}</p>
+            <p style="margin:0; font-size:14px; color:var(--cream-dim);"><strong>Agenda:</strong> ${mom.agenda || ''}</p>
+            <p style="margin:0; font-size:14px; color:var(--cream-dim);"><strong>Decisions:</strong> ${mom.decisions || ''}</p>
+            <div style="margin-top:6px; display:flex; gap:8px;">
+              <button type="button" class="btn btn-glass glass btn-sm" style="color:#ff8585;" onclick="deleteMoM(${idx})">Delete</button>
+            </div>
+          </div>
+        `).join("");
+      }
+
+      window.deleteMoM = function (idx) {
+        if (!confirm("Delete this meeting archive?")) return;
+        data.moms.splice(idx, 1);
+        renderMoMs();
+        toast("Meeting minutes removed.");
+      };
+
+      document.getElementById("form-mom").addEventListener("submit", function (e) {
+        e.preventDefault();
+        var title = document.getElementById("mom-title").value.trim();
+        var date = document.getElementById("mom-date").value.trim();
+        var attendees = document.getElementById("mom-attendees").value.split(",").map(s => s.trim()).filter(Boolean);
+        var agenda = document.getElementById("mom-agenda").value.trim();
+        var decisions = document.getElementById("mom-decisions").value.trim();
+        var rawActions = document.getElementById("mom-actions").value.trim().split("\n");
+        var actions = rawActions.map(line => {
+          var parts = line.split("|");
+          return { task: (parts[0] || '').trim(), assignee: (parts[1] || '').trim(), done: false };
+        }).filter(a => a.task);
+
+        data.moms.unshift({
+          id: "mom-" + Date.now(),
+          title: title,
+          date: date,
+          attendees: attendees,
+          agenda: agenda,
+          decisions: decisions,
+          actionItems: actions
+        });
+
+        document.getElementById("form-mom").reset();
+        renderMoMs();
+        toast("New meeting minutes added!");
+      });
+
+      // --- RENDER LEADERBOARD ---
+      function getTier(pts) {
+        var tiers = data.leaderboardTiers || [
+          { name: "Supernova", minPoints: 300, icon: "" },
+          { name: "Pulsar", minPoints: 200, icon: "" },
+          { name: "Orbiter", minPoints: 100, icon: "" },
+          { name: "Stargazer", minPoints: 0, icon: "" }
+        ];
+        return tiers.find(t => pts >= t.minPoints) || tiers[tiers.length - 1];
+      }
+
+      function renderLeaderboard() {
+        var tbody = document.getElementById("table-leaderboard-body");
+        var sorted = data.members.filter(m => m.active !== false).sort((a, b) => (b.points || 0) - (a.points || 0));
+
+        tbody.innerHTML = sorted.map((m, rank) => {
+          var tier = getTier(m.points || 0);
+          return `
+            <tr>
+              <td>
+                <strong>#${rank + 1}</strong> &nbsp; ${m.name}
+              </td>
+              <td><span title="${tier.name}">${tier.icon} ${tier.name}</span></td>
+              <td><span style="font-weight:600; color:#b9cbef;">${m.tessClassifications || 0}</span></td>
+              <td><span style="font-weight:600;">${m.points || 0} pts</span></td>
+              <td>
+                <div style="display:flex; gap:6px;">
+                  <button type="button" class="btn btn-glass glass btn-sm" onclick="awardTess('${m.id}', 25)">+25</button>
+                  <button type="button" class="btn btn-glass glass btn-sm" onclick="awardTess('${m.id}', 50)">+50</button>
+                  <button type="button" class="btn btn-glass glass btn-sm" onclick="awardTess('${m.id}', 100)">+100</button>
+                </div>
+              </td>
+            </tr>
+          `;
+        }).join("");
+      }
+
+      window.awardTess = function (id, count) {
+        var m = data.members.find(x => x.id === id);
+        if (!m) return;
+        m.tessClassifications = (m.tessClassifications || 0) + count;
+        m.points = (m.points || 0) + count;
+        renderLeaderboard();
+        toast("Awarded +" + count + " TESS credits to " + m.firstName + "!");
+      };
+
+      // --- HASHER TAB ---
+      var hasherIn = document.getElementById("hasher-input");
+      var hasherOut = document.getElementById("hasher-output");
+      hasherIn.addEventListener("input", async function () {
+        var val = hasherIn.value.trim();
+        hasherOut.value = val ? await sha256(val, data.salt) : "";
+      });
+      document.getElementById("btn-copy-hash").addEventListener("click", function () {
+        if (!hasherOut.value) return;
+        navigator.clipboard.writeText(hasherOut.value);
+        toast("Hash copied to clipboard!");
+      });
+
+      // --- EXPORT TAB ---
+      function generateCode() {
+        return "/* ==========================================================================\n" +
+          "   CELESTA | Central Club Data Store\n" +
+          "   Managed via Moderator Studio (admin.html) or edited directly.\n" +
+          "   Last updated: " + new Date().toISOString() + "\n" +
+          "   ========================================================================== */\n\n" +
+          "window.CELESTA_DATA = " + JSON.stringify(data, null, 2) + ";\n";
+      }
+
+      function updateCodePreview() {
+        document.getElementById("code-output").textContent = generateCode();
+      }
+
+      document.getElementById("btn-copy-data").addEventListener("click", function () {
+        var code = generateCode();
+        navigator.clipboard.writeText(code);
+        toast("Full data code copied to clipboard!");
+      });
+
+      document.getElementById("btn-download-data").addEventListener("click", function () {
+        var code = generateCode();
+        var blob = new Blob([code], { type: "application/javascript;charset=utf-8" });
+        var a = document.createElement("a");
+        a.href = URL.createObjectURL(blob);
+        a.download = "club-data.js";
+        a.click();
+        URL.revokeObjectURL(a.href);
+        toast("Downloaded club-data.js!");
+      });
+
+      function renderAll() {
+        renderMembers();
+        renderMoMs();
+        renderLeaderboard();
+        updateCodePreview();
+      }
+    })();
+  </script>
+</body>
+</html>

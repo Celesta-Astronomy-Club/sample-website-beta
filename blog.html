@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  <title>Blog | Celesta</title>
+  <meta name="description" content="Articles on astronomy, space and technology from the Celesta community.">
+  <meta name="theme-color" content="#03060d">
+
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+  <!-- Link previews: see the note about the full image address in index.html -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Celesta">
+  <meta property="og:title" content="Blog | Celesta">
+  <meta property="og:description" content="Articles on astronomy, space and technology from the Celesta community.">
+  <meta property="og:image" content="assets/img/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="assets/js/site.js" defer></script>
+</head>
+
+<body data-page="blog">
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- Navigation. Built by assets/js/site.js. -->
+  <header data-layout="header"></header>
+
+  <main id="main">
+
+    <!-- ===== PAGE HEADER ================================================ -->
+    <section class="page-head">
+      <!-- Orbit lines, decorative only -->
+      <svg class="orbits" viewBox="-1100 -520 2200 1040" width="2200" height="1040" aria-hidden="true" focusable="false">
+        <defs>
+          <radialGradient id="orbit-fade" cx="0" cy="0" r="1000" gradientUnits="userSpaceOnUse">
+            <stop offset="0.28" stop-color="#e6e0d1" stop-opacity=".27"/>
+            <stop offset="1" stop-color="#e6e0d1" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <g transform="rotate(-14)">
+          <ellipse rx="420" ry="132" pathLength="1"/>
+          <ellipse rx="640" ry="200" pathLength="1"/>
+          <ellipse rx="900" ry="282" pathLength="1"/>
+          <circle r="3" fill="#e6e0d1">
+            <animateMotion dur="120s" begin="-15s" repeatCount="indefinite" path="M640 0 A640 200 0 1 1 -640 0 A640 200 0 1 1 640 0"/>
+          </circle>
+        </g>
+      </svg>
+
+      <div class="wrap">
+        <h1>Blog</h1>
+        <p class="lead">Articles on astronomy, space and technology from the Celesta community.</p>
+      </div>
+    </section>
+
+
+    <!-- ===== POSTS ====================================================== -->
+    <!-- These three are placeholders. For each one, change the title, the sentence and the link
+         (the href on the title), and add a picture:
+         put <img src="assets/img/blog/your-image.jpg" alt="..."> inside the .media box
+         and delete aria-hidden="true" on that box. Clicking anywhere on a card opens its link. -->
+    <section class="listing listing--last">
+      <div class="wrap">
+
+        <div class="card-grid card-grid--3">
+
+          <article class="card glass spot" data-cursor-area>
+            <div class="media" aria-hidden="true"><!-- Picture goes here --></div>
+            <div class="card-text">
+              <h2 class="card-title"><a class="card-link" href="https://www.blogger.com" target="_blank" rel="noopener">Finding your way around the night sky</a></h2>
+              <p class="card-blurb">A short guide to spotting constellations and planets, and where to begin as a first-time stargazer.</p>
+            </div>
+            <span class="card-cta">Read on Blogger <svg viewBox="0 0 8 14" fill="none" aria-hidden="true"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </article>
+
+          <article class="card glass spot" data-cursor-area>
+            <div class="media" aria-hidden="true"><!-- Picture goes here --></div>
+            <div class="card-text">
+              <h2 class="card-title"><a class="card-link" href="https://www.blogger.com" target="_blank" rel="noopener">How telescopes turn faint light into pictures</a></h2>
+              <p class="card-blurb">A look at mirrors, lenses and sensors, and why a larger aperture shows you more of the sky.</p>
+            </div>
+            <span class="card-cta">Read on Blogger <svg viewBox="0 0 8 14" fill="none" aria-hidden="true"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </article>
+
+          <article class="card glass spot" data-cursor-area>
+            <div class="media" aria-hidden="true"><!-- Picture goes here --></div>
+            <div class="card-text">
+              <h2 class="card-title"><a class="card-link" href="https://www.blogger.com" target="_blank" rel="noopener">Reading exoplanets in a dip of starlight</a></h2>
+              <p class="card-blurb">What the transit method is, and how students can explore it with real survey data.</p>
+            </div>
+            <span class="card-cta">Read on Blogger <svg viewBox="0 0 8 14" fill="none" aria-hidden="true"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </article>
+
+        </div>
+
+        <!-- The address is set in assets/js/site.js (links.blog) -->
+        <div class="blog-more">
+          <a class="btn btn-primary" data-link="blog" href="#">More blogs</a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer. Built by assets/js/site.js. -->
+  <footer data-layout="footer"></footer>
+</body>
+</html>

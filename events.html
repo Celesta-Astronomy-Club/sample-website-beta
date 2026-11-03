@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  <title>Events | Celesta</title>
+  <meta name="description" content="Celesta runs online workshops, guest sessions and student competitions, including the India High School Exoplanet Data Challenge, a free online machine learning hackathon.">
+  <meta name="theme-color" content="#03060d">
+
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+  <!-- Link previews: see the note about the full image address in index.html -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Celesta">
+  <meta property="og:title" content="Events | Celesta">
+  <meta property="og:description" content="Online workshops, guest sessions and student competitions, including the India High School Exoplanet Data Challenge.">
+  <meta property="og:image" content="assets/img/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/events.css">
+  <script src="assets/js/site.js" defer></script>
+</head>
+
+<body data-page="events">
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- Navigation. Built by assets/js/site.js. -->
+  <header data-layout="header"></header>
+
+  <main id="main">
+
+    <!-- ===== PAGE HEADER ================================================ -->
+    <section class="page-head">
+      <!-- Orbit lines, decorative only -->
+      <svg class="orbits" viewBox="-1100 -520 2200 1040" width="2200" height="1040" aria-hidden="true" focusable="false">
+        <defs>
+          <radialGradient id="orbit-fade" cx="0" cy="0" r="1000" gradientUnits="userSpaceOnUse">
+            <stop offset="0.28" stop-color="#e6e0d1" stop-opacity=".27"/>
+            <stop offset="1" stop-color="#e6e0d1" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <g transform="rotate(-14)">
+          <ellipse rx="420" ry="132" pathLength="1"/>
+          <ellipse rx="640" ry="200" pathLength="1"/>
+          <ellipse rx="900" ry="282" pathLength="1"/>
+          <circle r="3" fill="#e6e0d1">
+            <animateMotion dur="120s" begin="-70s" repeatCount="indefinite" path="M640 0 A640 200 0 1 1 -640 0 A640 200 0 1 1 640 0"/>
+          </circle>
+        </g>
+      </svg>
+
+      <div class="wrap">
+        <h1>Workshops, guest sessions and hackathons</h1>
+        <p class="lead">Celesta runs online workshops, guest sessions and student competitions. New opportunities are shared in the Discord community.</p>
+      </div>
+    </section>
+
+
+    <!-- ===== PAST EVENTS ================================================ -->
+    <!-- Each card is one event. Clicking a card opens a pop-up with the extra details.
+         To add an event, copy a whole <article> block and change the words.
+
+         card face:    [data-modal-title] [data-modal-kind] .card-blurb
+         pop-up only:  the content inside [data-modal-more]
+         picture:      put <img src="assets/img/..." alt="..."> inside the .media box
+                       (and delete aria-hidden="true" on that box) -->
+    <section class="listing">
+      <div class="wrap">
+        <div class="listing-head"><h2>Past Accomplishments</h2></div>
+
+        <div class="card-grid card-grid--2">
+
+          <!-- 1. India High School Exoplanet Data Challenge -->
+          <article class="card glass spot" data-modal="event" data-cursor-area>
+            <div class="media" data-modal-media>
+              <img src="assets/img/sitepics/events/hackathon.png" alt="India High School Exoplanet Data Challenge">
+            </div>
+            <div class="card-text">
+              <h3 class="card-title"><button class="card-open" type="button" data-modal-title>India High School Exoplanet Data Challenge</button></h3>
+              <p class="card-kind" data-modal-kind>Hackathon</p>
+              <p class="card-blurb">A free online machine learning hackathon on real NASA exoplanet data, open to high school students across India.</p>
+            </div>
+            <div data-modal-more hidden>
+              <p>Students worked solo or in teams of up to three to build machine learning models on NASA's KOI Cumulative Table, a catalog of Kepler exoplanet candidates. Featherless.ai sponsored the challenge.</p>
+              <dl class="facts">
+                <div><dt>Open to</dt><dd>Indian high school students, grades 9 to 12</dd></div>
+                <div><dt>Format</dt><dd>Free and online, over 1.5 months</dd></div>
+                <div><dt>Turnout</dt><dd><span class="num">~500</span> participants, about <span class="num">50</span> submissions</dd></div>
+              </dl>
+              <div class="modal-actions">
+                <!-- Address set in assets/js/site.js (links.exoplanet) -->
+                <a class="btn btn-primary" data-link="exoplanet" href="#">Know more</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 2. Building CelestaGPT -->
+          <article class="card glass spot" data-modal="event" data-cursor-area>
+            <div class="media" data-modal-media>
+              <img src="assets/img/sitepics/events/celestagpt.png" alt="Building CelestaGPT">
+            </div>
+            <div class="card-text">
+              <h3 class="card-title"><button class="card-open" type="button" data-modal-title>Building CelestaGPT</button></h3>
+              <p class="card-kind" data-modal-kind>Project</p>
+              <p class="card-blurb">A specialized AI assistant and astronomy mentor, built to make space science engaging and accessible worldwide.</p>
+            </div>
+            <div data-modal-more hidden>
+              <p>CelestaGPT is built by Celesta, a student-led astronomy community. It adapts to learners at every level, from absolute beginners to astrophysics students and amateur astronomers planning a night of observing, drawing on curated guidance and educational resources.</p>
+              <p>It covers theoretical astrophysics, cosmology, space exploration and astrophotography, from orbital dynamics to camera settings for deep-sky imaging. It also breaks down mathematical derivations and scientific programming.</p>
+              <p>For Olympiad students, it offers practice questions, mock exams and problem-solving strategies for the NSEA, INAO and IOAA. For stargazers, it helps plan observation sessions with star hopping, celestial coordinates and seasonal visibility.</p>
+              <div class="modal-actions">
+                <a class="btn btn-primary" data-link="celestagpt" href="#">Try CelestaGPT</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 3. Research Preprint Publication -->
+          <article class="card glass spot" data-modal="event" data-cursor-area>
+            <div class="media" data-modal-media>
+              <img src="assets/img/sitepics/events/research.png" alt="Preprint Publication of Our Research Work">
+            </div>
+            <div class="card-text">
+              <h3 class="card-title"><button class="card-open" type="button" data-modal-title>Sensitivity of a Ballistic Jupiter Gravity Assist</button></h3>
+              <p class="card-kind" data-modal-kind>Preprint Publication</p>
+              <p class="card-blurb">A deterministic N-body simulation study investigating the sensitivity of a Voyager-inspired ballistic Jupiter flyby to initial conditions and integration methods.</p>
+            </div>
+            <div data-modal-more hidden>
+              <p>Preprint publication of our research work: <em>Sensitivity of a Ballistic Jupiter Gravity Assist to Initial Conditions and Integration Method</em> (Published October 30, 2026 | Version v1 | Open Access).</p>
+              <p>Gravity-assist trajectories are sensitive to flyby geometry and to the numerical methods used to simulate them, but the two effects are rarely separated. We used the Gravitational Slingshot Mechanics Laboratory (GSML), a deterministic N-body simulation code, to study a Voyager-inspired ballistic Jupiter flyby.</p>
+              <p>Starting from a baseline case (420 km parking-orbit altitude, 280 km Jupiter periapsis altitude), we evaluated trajectory sensitivity across physical parameters and numerical integrators. With an adaptive Runge–Kutta–Fehlberg (RK45) integrator, only periapsis altitude changed the heliocentric velocity gain (±5 km moved gain by +0.04 and −0.05 km/s). However, replacing RK45 with a first-order Euler integrator made the solution invalid, proving why physical sensitivity must be separated from numerical error when validating trajectory software.</p>
+              <dl class="facts">
+                <div><dt>Authors</dt><dd>Aradhya Haldikar, Arnav Venkatesh, Nayla Moraes Ferreira, Aditya Banerjee, Harsh Agrawal</dd></div>
+                <div><dt>Group</dt><dd>Celesta Astronomy</dd></div>
+                <div><dt>Status</dt><dd>Preprint (Open Access)</dd></div>
+              </dl>
+              <div class="modal-actions">
+                <a class="btn btn-primary" href="https://doi.org/10.5281/zenodo.23809604" target="_blank" rel="noopener">Read preprint on Zenodo</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 4. Anatomy of a Telescope, Workshop Day 2 -->
+          <article class="card glass spot" data-modal="event" data-cursor-area>
+            <div class="media" data-modal-media>
+              <img src="assets/img/sitepics/events/telescope.png" alt="Anatomy of a Telescope">
+            </div>
+            <div class="card-text">
+              <h3 class="card-title"><button class="card-open" type="button" data-modal-title>Anatomy of a Telescope</button></h3>
+              <p class="card-kind" data-modal-kind>Celesta Workshop, Day 2</p>
+              <p class="card-blurb">Abhay, an astrophotographer, took a telescope apart live to show what each part does.</p>
+            </div>
+            <div data-modal-more hidden>
+              <p>Most people never see how a telescope works on the inside. Abhay, an acclaimed astrophotographer and Master Observer at the International Astronomy League, explained its anatomy by disassembling one from his collection and showing the audience what makes it such a powerful tool.</p>
+              <p>The session closed with a discussion led by Anirudh, Celesta's secretary, about the live launch of ISRO's CMS-03 that day.</p>
+              <div class="modal-actions">
+                <a class="btn btn-primary" href="https://youtu.be/pQzPtaHcBrg?si=owP4FaCLq8cNeM-T" target="_blank" rel="noopener">Watch on YouTube</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 5. Astronomy for Beginners, Workshop Day 1 -->
+          <article class="card glass spot" data-modal="event" data-cursor-area>
+            <div class="media" data-modal-media>
+              <img src="assets/img/sitepics/events/astro.png" alt="Astronomy for Beginners">
+            </div>
+            <div class="card-text">
+              <h3 class="card-title"><button class="card-open" type="button" data-modal-title>Astronomy for Beginners</button></h3>
+              <p class="card-kind" data-modal-kind>Celesta Workshop, Day 1</p>
+              <p class="card-blurb">Celesta's very first workshop, led by IOAA medalist Sumant Gupta, with a guided tour of Stellarium.</p>
+            </div>
+            <div data-modal-more hidden>
+              <p>Day 1 of Celesta's first workshop was led by Sumant Gupta, an IOAA Gold (Jr.) and Silver medalist. He shared his knowledge of the universe and took the audience on a tour of Stellarium.</p>
+              <p>Brief talks by Samritha and Abhay followed. Thank you to everyone who joined and made it a fun experience.</p>
+              <div class="modal-actions">
+                <a class="btn btn-primary" href="https://youtu.be/wcAsJdqFNi8?si=rAeAbza9ww6k68lU" target="_blank" rel="noopener">Watch on YouTube</a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ===== UPCOMING EVENTS ============================================ -->
+    <!-- Smaller cards with a picture slot. Copy an <article> to add one. -->
+    <section class="listing">
+      <div class="wrap">
+        <div class="listing-head"><h2>Upcoming events</h2></div>
+
+        <div class="card-grid card-grid--4">
+          <article class="card card--compact glass spot">
+            <div class="media">
+              <img src="assets/img/sitepics/events/gameathon.png" alt="Astronomy Gameathon">
+            </div>
+            <div class="card-text">
+              <h3 class="card-title">Astronomy Gameathon</h3>
+              <p class="card-kind">Coming soon</p>
+            </div>
+          </article>
+
+          <article class="card card--compact glass spot">
+            <div class="media">
+              <img src="assets/img/sitepics/events/quiz.png" alt="Space Quiz Challenge">
+            </div>
+            <div class="card-text">
+              <h3 class="card-title">Space Quiz Challenge</h3>
+              <p class="card-kind">Coming soon</p>
+            </div>
+          </article>
+
+          <article class="card card--compact glass spot">
+            <div class="media">
+              <img src="assets/img/sitepics/events/reshack.png" alt="Research Based Hackathon">
+            </div>
+            <div class="card-text">
+              <h3 class="card-title">Research Based Hackathon</h3>
+              <p class="card-kind">Coming soon</p>
+            </div>
+          </article>
+
+          <article class="card card--compact glass spot">
+            <div class="media">
+              <img src="assets/img/sitepics/events/more.png" alt="More events coming soon">
+            </div>
+            <div class="card-text">
+              <h3 class="card-title">And many more</h3>
+              <p class="card-kind">Stay tuned</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer. Built by assets/js/site.js. -->
+  <footer data-layout="footer"></footer>
+</body>
+</html>

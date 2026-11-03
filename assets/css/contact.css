@@ -1,0 +1,36 @@
+/* ==========================================================================
+   CELESTA | Contact page styles
+   Loaded after style.css, and only by contact.html. Colours, fonts and the
+   shared layout pieces all come from style.css.
+   ========================================================================== */
+
+.mail { padding: clamp(8px, 2vw, 24px) 0 clamp(40px, 6vw, 80px); }
+
+.mail-panel {
+  display: flex; flex-direction: column; align-items: flex-start;
+  gap: clamp(28px, 4vw, 44px);
+  padding: clamp(32px, 6vw, 80px);
+  border-radius: clamp(30px, 4.4vw, 48px);
+}
+
+/* The address itself. Clicking it selects the whole thing, so it is easy to copy. */
+.mail-address {
+  margin: 0;
+  max-width: 100%;
+  font-size: clamp(21px, 4.6vw, 64px);
+  font-weight: 600; letter-spacing: -.04em; line-height: 1.08;
+  overflow-wrap: anywhere;
+  user-select: all;
+}
+
+.mail-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+
+@media (min-width: 761px) {
+  .card-grid--2 > .card--social:last-child:nth-child(odd) {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 560px) {
+  .mail-actions .btn { flex: 1 1 100%; }
+}

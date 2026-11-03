@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  <title>Magazine | Celesta</title>
+  <meta name="description" content="Celesta's magazine, released volume by volume. Volume 1 is themed on new frontiers.">
+  <meta name="theme-color" content="#03060d">
+
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+  <!-- Link previews: see the note about the full image address in index.html -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Celesta">
+  <meta property="og:title" content="Magazine | Celesta">
+  <meta property="og:description" content="Celesta's magazine, released volume by volume. Volume 1 is themed on new frontiers.">
+  <meta property="og:image" content="assets/img/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/magazine.css">
+  <script src="assets/js/site.js" defer></script>
+  <script src="assets/js/page-flip.browser.min.js" defer></script>
+  <script src="assets/js/magazine-reader.js" defer></script>
+</head>
+
+<body data-page="magazine">
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- Navigation. Built by assets/js/site.js. -->
+  <header data-layout="header"></header>
+
+  <main id="main">
+
+    <!-- ===== PAGE HEADER ================================================ -->
+    <section class="page-head">
+      <!-- Orbit lines, decorative only -->
+      <svg class="orbits" viewBox="-1100 -520 2200 1040" width="2200" height="1040" aria-hidden="true" focusable="false">
+        <defs>
+          <radialGradient id="orbit-fade" cx="0" cy="0" r="1000" gradientUnits="userSpaceOnUse">
+            <stop offset="0.28" stop-color="#e6e0d1" stop-opacity=".27"/>
+            <stop offset="1" stop-color="#e6e0d1" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <g transform="rotate(-14)">
+          <ellipse rx="420" ry="132" pathLength="1"/>
+          <ellipse rx="640" ry="200" pathLength="1"/>
+          <ellipse rx="900" ry="282" pathLength="1"/>
+          <circle r="3" fill="#e6e0d1">
+            <animateMotion dur="120s" begin="-55s" repeatCount="indefinite" path="M640 0 A640 200 0 1 1 -640 0 A640 200 0 1 1 640 0"/>
+          </circle>
+        </g>
+      </svg>
+
+      <div class="wrap">
+        <h1>Magazine</h1>
+        <p class="lead">Celesta's magazine, released volume by volume.</p>
+      </div>
+    </section>
+
+
+    <!-- ===== VOLUMES ==================================================== -->
+    <!-- Volume 1 is live. Volumes 2 and 3 are placeholders marked "To be released".
+         Picture: put <img src="assets/img/magazine/your-image.jpg" alt="..."> inside a .media box
+         and delete aria-hidden="true" on that box.
+
+         To release Volume 2: copy the whole Volume 1 <article> below, paste it over the Volume 2 one,
+         then change the title, the theme line, the description and the link (the href on the title). -->
+    <section class="listing listing--last">
+      <div class="wrap">
+
+        <div class="card-grid card-grid--3">
+
+          <!-- Volume 1: live -->
+          <article class="card glass spot" data-cursor-area>
+            <div class="media">
+              <img src="assets/img/sitepics/magazine/vol1.png" alt="Celesta Magazine Volume 1: New Frontiers">
+            </div>
+            <div class="card-text">
+              <h2 class="card-title"><button class="card-open" type="button" data-open-flipbook>Volume 1</button></h2>
+              <p class="card-kind">New frontiers</p>
+              <p class="card-blurb">This issue's theme is new frontiers, chosen mostly because 2026 refuses to slow down: private companies are launching people into orbit with the regularity of a commuter train, and entire nations are edging toward their first crewed missions. Every article here, one way or another, is about someone doing something for the first time and hoping gravity doesn't notice.</p>
+            </div>
+            <div class="mag-card-actions">
+              <button type="button" class="btn btn-primary btn-sm" data-open-flipbook>
+                Open Flipbook Reader
+              </button>
+              <a href="assets/magazinevol1.pdf" download="Celesta_Magazine_Volume_1.pdf" class="btn btn-glass btn-sm glass" title="Download offline PDF copy">
+                Download PDF
+              </a>
+            </div>
+          </article>
+
+          <!-- Volume 2: to be released -->
+          <article class="card glass">
+            <div class="media">
+              <img src="assets/img/sitepics/magazine/tba.png" alt="Volume 2: To be released">
+            </div>
+            <div class="card-text">
+              <h2 class="card-title">Volume 2</h2>
+            </div>
+            <span class="card-cta">To be released</span>
+          </article>
+
+          <!-- Volume 3: to be released -->
+          <article class="card glass">
+            <div class="media">
+              <img src="assets/img/sitepics/magazine/tba.png" alt="Volume 3: To be released">
+            </div>
+            <div class="card-text">
+              <h2 class="card-title">Volume 3</h2>
+            </div>
+            <span class="card-cta">To be released</span>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== LOCAL NATIVE FLIPBOOK & DARK PDF READER MODAL ======================= -->
+    <div class="mag-modal" id="mag-reader-modal" hidden role="dialog" aria-modal="true" aria-label="Celesta Magazine Reader">
+      <!-- Toolbar -->
+      <div class="mag-toolbar">
+        <div class="mag-title-block">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20" aria-hidden="true" style="color:var(--cream-dim);"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+          <div>
+            <h3 class="mag-brand-title">Celesta Magazine — Volume 1</h3>
+            <span class="mag-brand-sub">New Frontiers (2026) • 25 Pages</span>
+          </div>
+        </div>
+
+        <div class="mag-controls">
+          <!-- Zoom Controls -->
+          <div class="mag-zoom-group" id="mag-zoom-controls">
+            <button type="button" class="mag-btn-icon" id="mag-zoom-out" aria-label="Zoom out" title="Zoom out">−</button>
+            <span class="mag-zoom-text" id="mag-zoom-text">100%</span>
+            <button type="button" class="mag-btn-icon" id="mag-zoom-in" aria-label="Zoom in" title="Zoom in">+</button>
+          </div>
+
+          <!-- Fullscreen Button -->
+          <button type="button" class="mag-btn" id="mag-fs-btn" title="Toggle Fullscreen">
+            <span id="mag-fs-icon">⛶</span> Fullscreen
+          </button>
+
+          <!-- Download PDF -->
+          <a href="assets/magazinevol1.pdf" download="Celesta_Magazine_Volume_1.pdf" class="mag-btn mag-btn--primary" title="Download offline PDF copy">
+            Download PDF
+          </a>
+
+          <button type="button" class="mag-close-btn" id="mag-close-btn" aria-label="Close Reader">✕</button>
+        </div>
+      </div>
+
+      <!-- Viewer Container -->
+      <div class="mag-viewer-wrap">
+        
+        <!-- 3D Flipbook View (Local Canvas/CSS3 3D Flipbook) -->
+        <div class="mag-flipbook-view" id="mag-view-flipbook">
+          <!-- Outer Navigation Arrows -->
+          <button type="button" class="mag-nav-arrow mag-nav-arrow--prev" id="mag-side-prev" aria-label="Previous Page">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </button>
+          <button type="button" class="mag-nav-arrow mag-nav-arrow--next" id="mag-side-next" aria-label="Next Page">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+
+          <!-- Book Stage Wrapper -->
+          <div class="mag-book-stage" id="mag-book-stage">
+            <div id="mag-book-element"></div>
+          </div>
+
+          <!-- Floating Bottom Control Dock -->
+          <div class="mag-dock">
+            <button type="button" class="mag-dock-btn" id="dock-btn-first" title="First Page (Cover)">⏮</button>
+            <button type="button" class="mag-dock-btn" id="dock-btn-prev" title="Previous Page">◀</button>
+            
+            <div class="mag-dock-info">
+              <span id="mag-dock-page-text">Cover (Page 1)</span>
+              <input type="range" id="mag-dock-slider" min="1" max="25" value="1" aria-label="Page scrubber" title="Scrub to page">
+            </div>
+
+            <button type="button" class="mag-dock-btn" id="dock-btn-next" title="Next Page">▶</button>
+            <button type="button" class="mag-dock-btn" id="dock-btn-last" title="Last Page (Back Cover)">⏭</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer. Built by assets/js/site.js. -->
+  <footer data-layout="footer"></footer>
+</body>
+</html>

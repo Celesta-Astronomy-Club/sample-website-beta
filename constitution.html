@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  <title>Dashboard | Celesta</title>
+  <meta name="description" content="Verified Celesta member portal, official credentials, constitution and meeting minutes.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#03060d">
+
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/constitution.css">
+  <script src="assets/data/club-data.js"></script>
+  <script src="assets/js/qrcode.min.js"></script>
+  <script src="assets/js/site.js" defer></script>
+  <script src="assets/js/constitution.js" defer></script>
+</head>
+
+<body data-page="constitution">
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- Navigation. Built by assets/js/site.js. -->
+  <header data-layout="header"></header>
+
+  <main id="main">
+
+    <!-- ===== PAGE HEADER ================================================ -->
+    <!-- The sentence under the title changes once a valid Club ID is entered.
+         Edit both versions here: data-locked is shown first, data-open after unlocking. -->
+    <section class="page-head">
+      <!-- Orbit lines, decorative only -->
+      <svg class="orbits" viewBox="-1100 -520 2200 1040" width="2200" height="1040" aria-hidden="true" focusable="false">
+        <defs>
+          <radialGradient id="orbit-fade" cx="0" cy="0" r="1000" gradientUnits="userSpaceOnUse">
+            <stop offset="0.28" stop-color="#e6e0d1" stop-opacity=".27"/>
+            <stop offset="1" stop-color="#e6e0d1" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <g transform="rotate(-14)">
+          <ellipse rx="420" ry="132" pathLength="1"/>
+          <ellipse rx="640" ry="200" pathLength="1"/>
+          <ellipse rx="900" ry="282" pathLength="1"/>
+          <circle r="3" fill="#e6e0d1">
+            <animateMotion dur="120s" begin="-35s" repeatCount="indefinite" path="M640 0 A640 200 0 1 1 -640 0 A640 200 0 1 1 640 0"/>
+          </circle>
+        </g>
+      </svg>
+
+      <div class="wrap">
+        <h1>Dashboard</h1>
+        <p class="lead" data-lead
+           data-locked="For Celesta members. Enter your Club ID to access credentials, constitution, and meeting records."
+           data-open="Welcome to the member portal. Access your verified ID credentials, official constitution, and meeting records.">For Celesta members. Enter your Club ID to access credentials, constitution, and meeting records.</p>
+      </div>
+    </section>
+
+
+    <!-- ===== CLUB ID GATE =============================================== -->
+    <!-- The list of Club IDs is in assets/js/site.js (clubIds). -->
+    <section class="gate" data-gate>
+      <div class="wrap">
+        <form class="gate-panel glass" data-gate-panel data-gate-form novalidate autocomplete="off">
+          <div class="gate-lock" aria-hidden="true">
+            <svg viewBox="0 0 40 44" fill="none">
+              <path class="shackle" d="M12 19V13a8 8 0 0 1 16 0v6" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+              <rect x="6" y="19" width="28" height="21" rx="6" fill="currentColor"/>
+              <circle cx="20" cy="28.5" r="2.6" fill="#0e1726"/>
+              <rect x="19" y="29" width="2" height="5.5" rx="1" fill="#0e1726"/>
+            </svg>
+          </div>
+
+          <label for="club-id">Club ID</label>
+          <div class="gate-row">
+            <input id="club-id" name="club-id" type="text" placeholder="Enter your Club ID"
+                   autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false"
+                   aria-describedby="gate-message">
+            <button class="btn btn-primary" type="submit">Open</button>
+          </div>
+          <p class="gate-msg" id="gate-message" data-gate-message role="alert"></p>
+          <p class="gate-note">Club IDs are given to members. If you are one and need yours, ask a lead.</p>
+        </form>
+      </div>
+    </section>
+
+
+    <!-- ===== THE CONSTITUTION =========================================== -->
+    <!-- Hidden until a valid Club ID is entered.
+
+         This is placeholder text. Replace it with the real constitution:
+         - Each <section class="article"> is one numbered part. Its number is automatic.
+         - Each <li> inside <ol class="clauses"> is one numbered rule (1.1, 1.2, 2.1 ...). Copy one to add a rule.
+         - The boxes are <div class="value glass spot">. Copy one to add a box.
+         - To add a part, copy a whole <section class="article"> and also add a matching link in the contents list. -->
+    <div class="doc" data-constitution hidden>
+
+      <!-- Portal Navigation Tabs -->
+      <div class="wrap portal-nav">
+        <div class="portal-tabs glass spot" aria-label="Portal Navigation">
+          <button type="button" class="portal-tab is-active" data-portal-tab="badge">Member ID Badge</button>
+          <button type="button" class="portal-tab" data-portal-tab="constitution">Constitution</button>
+          <button type="button" class="portal-tab" data-portal-tab="mom">Minutes of Meetings (<span id="portal-mom-count">0</span>)</button>
+        </div>
+      </div>
+
+      <!-- ===== VIEW 1: MEMBER BADGE & CREDENTIALS ===== -->
+      <div id="portal-badge" class="portal-view is-active">
+        <div class="wrap">
+          <div class="badge-scene">
+
+            <!-- 3D Holographic Interactive Card -->
+            <div id="holo-card" class="holo-card" data-cursor-area title="Hover to interact in 3D">
+              <div class="holo-shimmer"></div>
+
+              <!-- Top Bar -->
+              <div class="card-brand-bar">
+                <img src="assets/img/bannerlogo_transparent.png" alt="Celesta">
+                <span id="badge-code" class="card-reg-no">CEL-2025-001</span>
+              </div>
+
+              <!-- Middle Core Details -->
+              <div class="card-core">
+                <div class="card-avatar-wrap">
+                  <img id="badge-avatar" src="assets/img/members/def1.png" alt="Member Avatar">
+                </div>
+                <div class="card-details">
+                  <h3 id="badge-name" class="card-member-name">Member Name</h3>
+                  <p class="card-member-role">
+                    <span id="badge-role">Member</span>
+                    <span id="badge-tier-badge" class="badge badge--silver">Member</span>
+                  </p>
+                </div>
+              </div>
+
+              <!-- Bottom Bar -->
+              <div class="card-foot">
+                <div class="card-foot-meta">
+                  <span>STATUS: <strong style="color:#2ecc71;">● ACTIVE CREDENTIAL</strong></span>
+                  <span>VALID: <strong id="badge-valid-year">2025–2027</strong></span>
+                </div>
+                <div class="card-qr-box" id="badge-qr-container" title="Scan to verify"></div>
+              </div>
+            </div>
+
+            <!-- Actions Bar -->
+            <div class="badge-actions">
+              <button type="button" class="btn btn-primary" id="btn-download-badge">
+                Download ID Card (.PNG)
+              </button>
+              <button type="button" class="btn btn-glass glass" id="btn-copy-verify">
+                Copy Verification Link
+              </button>
+              <a href="admin.html" class="btn btn-glass glass" id="link-admin-studio" hidden>
+                Moderator Studio
+              </a>
+              <button class="btn btn-glass glass" type="button" data-lock>Lock</button>
+            </div>
+
+            <!-- Hidden Canvas for Crisp High-Res Export -->
+            <canvas id="export-canvas" width="1200" height="750" style="display:none;"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== VIEW 2: CONSTITUTION ===== -->
+      <div id="portal-constitution" class="portal-view">
+        <div class="wrap doc-layout">
+
+        <aside class="doc-toc" aria-label="Contents">
+          <p class="doc-toc-title">Contents</p>
+          <ol>
+            <li><a href="#purpose">Purpose and principles</a></li>
+            <li><a href="#values">Core values</a></li>
+            <li><a href="#membership">Membership</a></li>
+            <li><a href="#roles">Roles and responsibilities</a></li>
+            <li><a href="#conduct">Rules and conduct</a></li>
+            <li><a href="#decisions">Decisions and amendments</a></li>
+          </ol>
+          <div class="doc-tools">
+            <button class="btn btn-glass btn-sm glass" type="button" data-print>Print</button>
+            <button class="btn btn-glass btn-sm glass" type="button" data-lock>Lock</button>
+          </div>
+        </aside>
+
+        <article class="doc-body">
+          <p class="doc-meta">Version 0.1, draft. Last updated October 2026.</p>
+
+          <section class="article" id="purpose">
+            <h2>Purpose and principles</h2>
+            <p class="intro">Celesta is a student-led astronomy organization built around education, research, technical projects, outreach and hands-on STEM learning. This constitution explains how we work together and what members can expect from the organization and from each other.</p>
+            <ol class="clauses">
+              <li>Celesta exists to make astronomy approachable without reducing its intellectual depth.</li>
+              <li>Astronomy is our entry point to a wider range of science and technology, including data science, software, research methods and engineering.</li>
+              <li>Celesta is student-led. Leaders and members are students who volunteer their time.</li>
+              <li>We value access. Opportunities and learning material should reach students wherever they are.</li>
+              <li>We share credit openly and name the sources, collaborators and mentors behind our work.</li>
+            </ol>
+          </section>
+
+          <section class="article" id="values">
+            <h2>Core values</h2>
+            <p class="intro">Six values guide how we learn, build and treat each other.</p>
+            <div class="card-grid card-grid--2">
+              <div class="value glass spot">
+                <h3>Curiosity</h3>
+                <p>We ask questions first and treat not knowing yet as the start of learning.</p>
+              </div>
+              <div class="value glass spot">
+                <h3>Access</h3>
+                <p>Astronomy and STEM opportunities should reach students beyond a conventional classroom.</p>
+              </div>
+              <div class="value glass spot">
+                <h3>Collaboration</h3>
+                <p>We learn faster together, across schools, countries and levels of experience.</p>
+              </div>
+              <div class="value glass spot">
+                <h3>Integrity</h3>
+                <p>We are honest about what we know, what we have done and where our ideas come from.</p>
+              </div>
+              <div class="value glass spot">
+                <h3>Rigor</h3>
+                <p>We keep the depth in astronomy, check our work and welcome correction.</p>
+              </div>
+              <div class="value glass spot">
+                <h3>Service</h3>
+                <p>We give our time to help others learn, and we follow through on what we commit to.</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="article" id="membership">
+            <h2>Membership</h2>
+            <p class="intro">Celesta has three membership levels. The badge beside a name on the Members page shows which one it is.</p>
+            <ol class="clauses">
+              <li>Leads are students who lead a team or the organization.</li>
+              <li>Members are students who contribute to Celesta's projects, events and community.</li>
+              <li>Interns are students who join through the internship program and work on technical, research, social media or organizational projects.</li>
+              <li>Anyone with a passion to volunteer may apply for an internship. There are no other restrictions.</li>
+              <li>Club IDs are given to members and open members-only pages. Please do not share yours outside Celesta.</li>
+              <li>A member may step back at any time by letting a lead know.</li>
+            </ol>
+          </section>
+
+          <section class="article" id="roles">
+            <h2>Roles and responsibilities</h2>
+            <p class="intro">Each role carries responsibilities, not just a title.</p>
+            <ol class="clauses">
+              <li>The President guides Celesta's direction, represents the organization externally and chairs leadership meetings.</li>
+              <li>The Joint Vice Presidents support the President, coordinate teams and step in when the President is unavailable.</li>
+              <li>The Technical Lead looks after Celesta's technical work, including the website and software projects.</li>
+              <li>The Social Media Leads manage Celesta's public channels and keep what we post accurate, respectful and consistent.</li>
+              <li>Every lead keeps their team informed and hands their work over clearly when their role ends.</li>
+            </ol>
+          </section>
+
+          <section class="article" id="conduct">
+            <h2>Rules and conduct</h2>
+            <p class="intro">These rules apply on Discord, at workshops and events, and anywhere else people represent Celesta.</p>
+            <ol class="clauses">
+              <li>Treat everyone with respect. Harassment, discrimination and bullying are not tolerated.</li>
+              <li>Keep discussions constructive. Disagree with ideas, not with people.</li>
+              <li>Be honest in academic and competition work. Credit your sources and never present someone else's work as your own.</li>
+              <li>Protect privacy. Do not share personal information or private messages without permission.</li>
+              <li>Use Celesta's name, logo and channels only for approved activities.</li>
+              <li>Report concerns to a lead. Reports are handled fairly and with care.</li>
+              <li>Serious or repeated breaches may lead to a warning, removal from a role or removal from Celesta.</li>
+            </ol>
+
+            <h3 class="guidelines-title">Guidelines</h3>
+            <div class="card-grid card-grid--2">
+              <div class="value glass spot">
+                <h3>Do</h3>
+                <ul>
+                  <li>Ask for help and share what you learn.</li>
+                  <li>Give feedback kindly and specifically.</li>
+                  <li>Cite your sources.</li>
+                  <li>Tell a lead early if you cannot finish something.</li>
+                </ul>
+              </div>
+              <div class="value glass spot">
+                <h3>Avoid</h3>
+                <ul>
+                  <li>Spam or unrelated promotion.</li>
+                  <li>Sharing other people's private information.</li>
+                  <li>Speaking for Celesta without approval.</li>
+                  <li>Copying work without credit.</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <section class="article" id="decisions">
+            <h2>Decisions and amendments</h2>
+            <p class="intro">How decisions are made, and how this constitution can change.</p>
+            <ol class="clauses">
+              <li>Day-to-day decisions are made by the leads responsible for that area.</li>
+              <li>Decisions that affect the whole organization are made by the leadership team by majority, after hearing from members.</li>
+              <li>Important decisions and changes are announced to members on Discord.</li>
+              <li>Any member can propose an amendment to this constitution by contacting a lead.</li>
+              <li>An amendment passes when a majority of the leadership team approves it. The version number and date at the top are then updated.</li>
+            </ol>
+          </section>
+        </article>
+
+      </div>
+    </div>
+
+    <!-- ===== VIEW 3: MINUTES OF MEETINGS (MoM) ===== -->
+    <div id="portal-mom" class="portal-view">
+      <div class="wrap">
+        <div class="mom-card glass spot" style="margin-bottom: 2rem;">
+          <div class="mom-card-head" style="border-bottom:none; padding-bottom:0;">
+            <div>
+              <h2 style="font-family: var(--font-heading); margin-bottom: 0.25rem;">Minutes of Meetings (MoM)</h2>
+              <p style="color: var(--cream-dim); margin: 0; font-size: 0.95rem;">Internal archive of leadership & club discussions, action items, and resolutions.</p>
+            </div>
+            <div class="doc-tools" style="margin: 0;">
+              <button class="btn btn-glass btn-sm glass" type="button" data-lock>Lock</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="mom-wrap" id="portal-mom-list">
+          <!-- Dynamic MoMs rendered from window.CELESTA_DATA.moms -->
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  </main>
+
+  <!-- Footer. Built by assets/js/site.js. -->
+  <footer data-layout="footer"></footer>
+</body>
+</html>

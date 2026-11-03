@@ -1,0 +1,42 @@
+/* ==========================================================================
+   CELESTA | Events page styles
+   Loaded after style.css, and only by events.html. The cards, pop-up and
+   picture slots all come from style.css.
+   ========================================================================== */
+
+
+/* Light-curve graphic on the hackathon card: a planet crossing its star dims the light slightly. */
+.transit { display: block; width: 100%; height: auto; overflow: visible; }
+.transit .fit {
+  fill: none;
+  stroke: rgba(230, 224, 209, .5);
+  stroke-width: 1.25; stroke-linejoin: round; stroke-linecap: round;
+}
+.transit .pts {
+  fill: none;
+  stroke: rgba(230, 224, 209, .82);
+  stroke-width: 3; stroke-linecap: round;
+}
+
+
+/* A few key facts inside the hackathon pop-up. */
+.facts { margin: 0; }
+.facts > div {
+  display: grid;
+  grid-template-columns: 6.5em minmax(0, 1fr);
+  gap: 16px;
+  padding: 13px 0;
+  border-top: 1px solid var(--rule);
+}
+.facts > div:last-child { border-bottom: 1px solid var(--rule); }
+.facts dt { padding-top: .2em; font-size: 15px; color: var(--cream-faint); }
+.facts dd {
+  margin: 0;
+  font-size: 17px; font-weight: 500; letter-spacing: -.01em; line-height: 1.4;
+  text-wrap: pretty;
+}
+.facts .num { font-size: 1.35em; font-weight: 600; letter-spacing: -.03em; line-height: 1; }
+
+@media (max-width: 560px) {
+  .facts > div { grid-template-columns: 1fr; gap: 4px; }
+}

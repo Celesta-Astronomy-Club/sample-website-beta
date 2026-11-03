@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  <title>Contact | Celesta</title>
+  <meta name="description" content="Get in touch with Celesta by email, or find the community on Discord, YouTube, Instagram, LinkedIn and Devpost.">
+  <meta name="theme-color" content="#03060d">
+
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+  <!-- Link previews: see the note about the full image address in index.html -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Celesta">
+  <meta property="og:title" content="Contact | Celesta">
+  <meta property="og:description" content="Get in touch with Celesta by email, or find the community online.">
+  <meta property="og:image" content="assets/img/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/contact.css">
+  <script src="assets/js/site.js" defer></script>
+</head>
+
+<body data-page="contact">
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- Navigation. Built by assets/js/site.js. -->
+  <header data-layout="header"></header>
+
+  <main id="main">
+
+    <!-- ===== PAGE HEADER ================================================ -->
+    <section class="page-head">
+      <!-- Orbit lines, decorative only -->
+      <svg class="orbits" viewBox="-1100 -520 2200 1040" width="2200" height="1040" aria-hidden="true" focusable="false">
+        <defs>
+          <radialGradient id="orbit-fade" cx="0" cy="0" r="1000" gradientUnits="userSpaceOnUse">
+            <stop offset="0.28" stop-color="#e6e0d1" stop-opacity=".27"/>
+            <stop offset="1" stop-color="#e6e0d1" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <g transform="rotate(-14)">
+          <ellipse rx="420" ry="132" pathLength="1"/>
+          <ellipse rx="640" ry="200" pathLength="1"/>
+          <ellipse rx="900" ry="282" pathLength="1"/>
+          <circle r="3" fill="#e6e0d1">
+            <animateMotion dur="120s" begin="-100s" repeatCount="indefinite" path="M640 0 A640 200 0 1 1 -640 0 A640 200 0 1 1 640 0"/>
+          </circle>
+        </g>
+      </svg>
+
+      <div class="wrap">
+        <h1>Get in touch</h1>
+        <p class="lead">For questions about Celesta, our events or getting involved, send us an email.</p>
+      </div>
+    </section>
+
+
+    <!-- ===== EMAIL ====================================================== -->
+    <!-- The address comes from assets/js/site.js (links.email). This whole block stays
+         hidden until an address is set there. -->
+    <section class="mail" data-needs-email>
+      <div class="wrap">
+        <div class="mail-panel glass spot">
+          <p class="mail-address" data-email-text></p>
+          <div class="mail-actions">
+            <a class="btn btn-primary" data-link="email" href="#">Send an email</a>
+            <button class="btn btn-glass glass" type="button" data-copy-email>Copy address</button>
+          </div>
+          <span class="sr-only" role="status" data-copy-status></span>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ===== ELSEWHERE ================================================== -->
+    <!-- Each card hides itself until its link is filled in assets/js/site.js -->
+    <section class="listing listing--last">
+      <div class="wrap">
+        <div class="listing-head">
+          <h2>Find us online</h2>
+        </div>
+
+        <div class="card-grid card-grid--2">
+          <!-- 1. Discord -->
+          <a class="card card--social glass spot" data-link="discord" href="#" data-cursor-area>
+            <div class="card-text">
+              <h3 class="card-title">Discord</h3>
+              <p class="card-kind">Community and projects</p>
+            </div>
+            <span class="card-cta">Join community <svg viewBox="0 0 8 14" fill="none" aria-hidden="true"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </a>
+
+          <!-- 2. YouTube -->
+          <a class="card card--social glass spot" data-link="youtube" href="#" data-cursor-area>
+            <div class="card-text">
+              <h3 class="card-title">YouTube</h3>
+              <p class="card-kind">@CelestaAstronomyClub</p>
+            </div>
+            <span class="card-cta">Watch workshops <svg viewBox="0 0 8 14" fill="none" aria-hidden="true"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </a>
+
+          <!-- 3. Instagram -->
+          <a class="card card--social glass spot" data-link="instagram" href="#" data-cursor-area>
+            <div class="card-text">
+              <h3 class="card-title">Instagram</h3>
+              <p class="card-kind">@celestaastronomy</p>
+            </div>
+            <span class="card-cta">Follow updates <svg viewBox="0 0 8 14" fill="none" aria-hidden="true"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </a>
+
+          <!-- 4. LinkedIn -->
+          <a class="card card--social glass spot" data-link="linkedin" href="#" data-cursor-area>
+            <div class="card-text">
+              <h3 class="card-title">LinkedIn</h3>
+              <p class="card-kind">Celesta Club</p>
+            </div>
+            <span class="card-cta">Connect on LinkedIn <svg viewBox="0 0 8 14" fill="none" aria-hidden="true"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </a>
+
+          <!-- 5. Devpost -->
+          <a class="card card--social glass spot" data-link="devpost" href="#" data-cursor-area>
+            <div class="card-text">
+              <h3 class="card-title">Devpost</h3>
+              <p class="card-kind">Projects and hackathons</p>
+            </div>
+            <span class="card-cta">Explore hackathons <svg viewBox="0 0 8 14" fill="none" aria-hidden="true"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer. Built by assets/js/site.js. -->
+  <footer data-layout="footer"></footer>
+
+  <!-- Shows the address from site.js as text and powers the "Copy address" button. -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var email = (SITE.links.email || "").trim();
+      var block = document.querySelector("[data-needs-email]");
+      if (!email) { if (block) block.hidden = true; return; }
+
+      document.querySelectorAll("[data-email-text]").forEach(function (el) { el.textContent = email; });
+
+      var button = document.querySelector("[data-copy-email]");
+      var status = document.querySelector("[data-copy-status]");
+      var address = document.querySelector("[data-email-text]");
+      if (!button) return;
+
+      function copy(text) {
+        if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(text);
+        return new Promise(function (resolve, reject) {
+          var field = document.createElement("textarea");
+          field.value = text; field.setAttribute("readonly", "");
+          field.style.position = "fixed"; field.style.opacity = "0";
+          document.body.appendChild(field); field.select();
+          try { document.execCommand("copy") ? resolve() : reject(); } catch (e) { reject(e); }
+          document.body.removeChild(field);
+        });
+      }
+
+      button.addEventListener("click", function () {
+        copy(email).then(function () {
+          button.textContent = "Copied";
+          if (status) status.textContent = "Address copied";
+          setTimeout(function () { button.textContent = "Copy address"; if (status) status.textContent = ""; }, 2000);
+        }, function () {
+          // Copying was blocked: select the address so it can be copied by hand.
+          var range = document.createRange(); range.selectNodeContents(address);
+          var selection = window.getSelection(); selection.removeAllRanges(); selection.addRange(range);
+        });
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  <title>Celesta | Astronomy, Technology and Access</title>
+  <meta name="description" content="Celesta is an astronomy-focused organization built around education, research, technical projects, outreach and hands-on STEM learning.">
+  <meta name="theme-color" content="#03060d">
+
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+  <!-- Link previews (WhatsApp, Discord, LinkedIn).
+       Once the domain is connected, change the image address below to the full one,
+       for example https://yourdomain.org/assets/img/og-image.png -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Celesta">
+  <meta property="og:title" content="Celesta | Astronomy, Technology and Access">
+  <meta property="og:description" content="An organization built around astronomy education, research, technical projects, outreach and hands-on STEM learning.">
+  <meta property="og:image" content="assets/img/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="assets/js/site.js" defer></script>
+  <script src="assets/js/sky-tonight.js" defer></script>
+</head>
+
+<body data-page="home">
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- Navigation. Built by assets/js/site.js. Change links and pages there. -->
+  <header data-layout="header"></header>
+
+  <main id="main">
+
+    <!-- ===== HERO ======================================================= -->
+    <section class="hero">
+      <div class="hero-inner">
+
+        <div class="emblem">
+          <!-- Orbit lines drawn around the emblem. Decorative only. -->
+          <svg class="orbits" viewBox="-1100 -520 2200 1040" width="2200" height="1040" aria-hidden="true" focusable="false">
+            <defs>
+              <radialGradient id="orbit-fade" cx="0" cy="0" r="1000" gradientUnits="userSpaceOnUse">
+                <stop offset="0.28" stop-color="#e6e0d1" stop-opacity=".27"/>
+                <stop offset="1" stop-color="#e6e0d1" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <g transform="rotate(-14)">
+              <ellipse rx="250" ry="78"  pathLength="1"/>
+              <ellipse rx="420" ry="132" pathLength="1"/>
+              <ellipse rx="640" ry="200" pathLength="1"/>
+              <ellipse rx="900" ry="282" pathLength="1"/>
+
+              <circle r="2.3" fill="#e6e0d1">
+                <animateMotion dur="70s"  begin="-12s"  repeatCount="indefinite" path="M250 0 A250 78 0 1 1 -250 0 A250 78 0 1 1 250 0"/>
+              </circle>
+              <circle r="3.2" fill="#e6e0d1">
+                <animateMotion dur="110s" begin="-48s"  repeatCount="indefinite" path="M420 0 A420 132 0 1 1 -420 0 A420 132 0 1 1 420 0"/>
+              </circle>
+              <circle r="2.6" fill="#b9cbef">
+                <animateMotion dur="170s" begin="-90s"  repeatCount="indefinite" path="M640 0 A640 200 0 1 1 -640 0 A640 200 0 1 1 640 0"/>
+              </circle>
+              <circle r="2" fill="#e6e0d1">
+                <animateMotion dur="240s" begin="-150s" repeatCount="indefinite" path="M900 0 A900 282 0 1 1 -900 0 A900 282 0 1 1 900 0"/>
+              </circle>
+            </g>
+          </svg>
+
+          <span class="emblem-disc glass" aria-hidden="true"></span>
+          <img src="assets/img/logo_transparent.png" alt="Celesta" width="116" height="116" fetchpriority="high">
+        </div>
+
+        <h1>Astronomy, Technology <br class="wide">and Access</h1>
+
+        <p class="lead">Celesta is an astronomy-focused organization built around education, research, technical projects, outreach and hands-on STEM learning.</p>
+
+        <div class="actions">
+          <!-- The Discord button hides itself until the invite link is added in assets/js/site.js -->
+          <a class="btn btn-primary" data-link="discord" href="#">Join the Discord</a>
+          <a class="btn btn-glass glass" href="about.html">About Celesta</a>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ===== STATEMENT ================================================== -->
+    <!-- The words light up one by one as this paragraph scrolls into view. -->
+    <section class="statement">
+      <div class="wrap">
+        <p class="scrub" data-scrub>At its core, Celesta aims to make astronomy more approachable without reducing its intellectual depth. Members are encouraged not only to learn about astronomy, but to use data, software, research methods and engineering to explore it.</p>
+      </div>
+    </section>
+
+
+    <!-- ===== WHAT WE DO ================================================= -->
+    <section class="work" id="initiatives">
+      <div class="wrap">
+        <div class="work-head">
+          <h2>Core Initiatives</h2>
+          <p class="lead">Opportunities, projects and resources for anyone passionate about astronomy, astrophysics and computational space science.</p>
+        </div>
+
+        <div class="card-grid card-grid--3">
+          <!-- 1. Education -->
+          <article class="card glass spot" data-modal="initiative" data-cursor-area>
+            <div class="media" data-modal-media>
+              <img src="assets/img/sitepics/homepage/education.png" alt="Education">
+            </div>
+            <div class="card-text">
+              <h3 class="card-title"><button class="card-open" type="button" data-modal-title>Education</button></h3>
+              <p class="card-blurb">Astronomy and astrophysics content, online workshops and guest sessions.</p>
+            </div>
+            <div data-modal-more hidden>
+              <p>Astronomy and astrophysics content, online workshops and guest sessions.</p>
+              <p>Our educational programs bridge curiosity with academic depth, bringing in Olympiad medalists and researchers to teach telescope mechanics, observational astronomy, and astrophysics fundamentals.</p>
+              <div class="modal-actions">
+                <a class="btn btn-primary" href="https://www.youtube.com/@CelestaAstronomyClub" target="_blank" rel="noopener">See our workshops</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 2. Research -->
+          <article class="card glass spot" data-modal="initiative" data-cursor-area>
+            <div class="media" data-modal-media>
+              <img src="assets/img/sitepics/homepage/research.png" alt="Research">
+            </div>
+            <div class="card-text">
+              <h3 class="card-title"><button class="card-open" type="button" data-modal-title>Research</button></h3>
+              <p class="card-blurb">Projects built around real scientific datasets.</p>
+            </div>
+            <div data-modal-more hidden>
+              <p>Projects built around real scientific datasets.</p>
+              <p>Celesta research initiatives engage in computational astrophysics, orbital mechanics, and transit detection, collaborating on preprint publications and reproducible scientific workflows.</p>
+              <div class="modal-actions">
+                <a class="btn btn-primary" href="https://doi.org/10.5281/zenodo.23809604" target="_blank" rel="noopener">Checkout our latest research work</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 3. Technology -->
+          <article class="card glass spot" data-modal="initiative" data-cursor-area>
+            <div class="media" data-modal-media>
+              <img src="assets/img/sitepics/homepage/technology.png" alt="Technology">
+            </div>
+            <div class="card-text">
+              <h3 class="card-title"><button class="card-open" type="button" data-modal-title>Technology</button></h3>
+              <p class="card-blurb">Technical and software-based STEM projects.</p>
+            </div>
+            <div data-modal-more hidden>
+              <p>Technical and software-based STEM projects.</p>
+              <p>We build tools at the intersection of astronomy and computing, including AI astronomy mentorship, gravitational simulation software, and open-source data tools.</p>
+              <div class="modal-actions">
+                <a class="btn btn-primary" data-link="celestagpt" href="https://celestagpt.carrd.co" target="_blank" rel="noopener">Try CelestaGPT</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 4. Competitions -->
+          <article class="card glass spot" data-modal="initiative" data-cursor-area>
+            <div class="media" data-modal-media>
+              <img src="assets/img/sitepics/homepage/competitions.png" alt="Competitions">
+            </div>
+            <div class="card-text">
+              <h3 class="card-title"><button class="card-open" type="button" data-modal-title>Competitions</button></h3>
+              <p class="card-blurb">Student competitions and hackathons.</p>
+            </div>
+            <div data-modal-more hidden>
+              <p>Student competitions and hackathons.</p>
+              <p>From nationwide exoplanet data challenges with NASA Kepler data to competitive quizzes and hackathons, we challenge participants to solve authentic space science problems.</p>
+              <div class="modal-actions">
+                <a class="btn btn-primary" href="https://celesta-exoplanet-challenge.devpost.com" target="_blank" rel="noopener">View competition on Devpost</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 5. Mentorship -->
+          <article class="card glass spot" data-modal="initiative" data-cursor-area>
+            <div class="media" data-modal-media>
+              <img src="assets/img/sitepics/homepage/mentorship.png" alt="Mentorship">
+            </div>
+            <div class="card-text">
+              <h3 class="card-title"><button class="card-open" type="button" data-modal-title>Mentorship</button></h3>
+              <p class="card-blurb">Mentorship and peer learning between students.</p>
+            </div>
+            <div data-modal-more hidden>
+              <p>Mentorship and peer learning between students.</p>
+              <p>Connecting aspiring astronomers and scientists with peers, Olympiad winners, and university mentors to guide projects, competitions, and academic pathways.</p>
+            </div>
+          </article>
+
+          <!-- 6. Internships -->
+          <article class="card glass spot" data-modal="initiative" data-cursor-area>
+            <div class="media" data-modal-media>
+              <img src="assets/img/sitepics/homepage/internships.png" alt="Internships">
+            </div>
+            <div class="card-text">
+              <h3 class="card-title"><button class="card-open" type="button" data-modal-title>Internships</button></h3>
+              <p class="card-blurb">Students contribute to technology, research, social media and organizational development, with interns joining from countries including Tunisia and Brazil.</p>
+            </div>
+            <div data-modal-more hidden>
+              <p>Students contribute to technology, research, social media and organizational development, with interns joining from countries including Tunisia and Brazil.</p>
+              <p>Join our international team and gain practical experience in research, computational astrophysics, content creation, and community leadership.</p>
+              <div class="modal-actions">
+                <a class="btn btn-primary" href="https://forms.gle/NvyiH7amfoEnEa2b7" target="_blank" rel="noopener">Apply here (Rolling Admissions)</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 7. Outreach -->
+          <article class="card card--wide glass spot" data-modal="initiative" data-cursor-area>
+            <div class="media" data-modal-media>
+              <img src="assets/img/sitepics/homepage/outreach.png" alt="Outreach">
+            </div>
+            <div class="card-text">
+              <h3 class="card-title"><button class="card-open" type="button" data-modal-title>Outreach</button></h3>
+              <p class="card-blurb">Astronomy outreach through social media and digital platforms.</p>
+            </div>
+            <div data-modal-more hidden>
+              <p>Astronomy outreach through social media and digital platforms.</p>
+              <p>Bringing the wonders of space exploration to a worldwide audience through insightful posts, engaging visual content, interactive community discussions, and digital outreach campaigns.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ===== CELESTAGPT ================================================= -->
+    <section class="gpt">
+      <div class="wrap">
+        <div class="panel glass spot">
+
+          <div class="panel-copy">
+            <div class="ai-badge">
+              <svg class="ai-sparkle-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z" fill="url(#sparkle-grad)"/>
+                <path d="M19 17L20.2 20.8L24 22L20.2 23.2L19 27L17.8 23.2L14 22L17.8 20.8L19 17Z" fill="url(#sparkle-grad)"/>
+                <path d="M4 4L4.8 6.2L7 7L4.8 7.8L4 10L3.2 7.8L1 7L3.2 6.2L4 4Z" fill="url(#sparkle-grad)"/>
+                <defs>
+                  <linearGradient id="sparkle-grad" x1="1" y1="2" x2="24" y2="27" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#b9cbef"/>
+                    <stop offset="1" stop-color="#f2d9b4"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+              <span>AI Astronomy Mentor</span>
+            </div>
+            <h2>Learn astronomy through conversation</h2>
+            <p class="lead">CelestaGPT is an AI-based astronomy mentor developed as part of Celesta's educational initiatives. It helps students explore astronomy and related STEM topics through conversational guidance.</p>
+
+            <!-- Hides itself until the CelestaGPT link is added in assets/js/site.js -->
+            <a class="btn btn-primary" data-link="celestagpt" href="#">Try CelestaGPT</a>
+
+            <!-- Decorative constellation -->
+            <svg class="constellation" viewBox="0 0 440 220" aria-hidden="true" focusable="false">
+              <line x1="30"  y1="170" x2="100" y2="120"/>
+              <line x1="100" y1="120" x2="180" y2="150"/>
+              <line x1="180" y1="150" x2="262" y2="86"/>
+              <line x1="262" y1="86"  x2="340" y2="118"/>
+              <line x1="340" y1="118" x2="408" y2="52"/>
+              <line x1="262" y1="86"  x2="300" y2="20"/>
+              <g class="halo">
+                <circle cx="30" cy="170" r="9"/><circle cx="100" cy="120" r="9"/><circle cx="180" cy="150" r="9"/>
+                <circle cx="262" cy="86" r="9"/><circle cx="340" cy="118" r="9"/><circle cx="408" cy="52" r="9"/><circle cx="300" cy="20" r="9"/>
+              </g>
+              <g class="dot">
+                <circle cx="30" cy="170" r="2.6"/><circle cx="100" cy="120" r="2.6"/><circle cx="180" cy="150" r="2.6"/>
+                <circle cx="262" cy="86" r="2.6"/><circle cx="340" cy="118" r="2.6"/><circle cx="408" cy="52" r="2.6"/><circle cx="300" cy="20" r="2.6"/>
+              </g>
+              <g class="dust">
+                <circle cx="60" cy="60" r="1.4"/><circle cx="150" cy="38" r="1.4"/><circle cx="214" cy="198" r="1.4"/>
+                <circle cx="384" cy="190" r="1.4"/><circle cx="20" cy="104" r="1.4"/><circle cx="236" cy="152" r="1.2"/>
+              </g>
+            </svg>
+          </div>
+
+          <div class="uses-wrap">
+            <p class="uses-title">What it helps with</p>
+            <ul class="uses">
+              <li>Astronomy and astrophysics concepts</li>
+              <li>Telescope and observational guidance</li>
+              <li>Astrophotography</li>
+              <li>Astronomy Olympiad preparation</li>
+              <li>Advanced problem-solving</li>
+              <li>General astronomy learning and exploration</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ===== CELESTA SKY TONIGHT ======================================= -->
+    <section class="sky-tonight" id="sky-tonight" data-sky-tonight>
+      <div class="wrap">
+        <div class="sky-tonight-head">
+          <div>
+            <h2>The Sky Tonight</h2>
+            <p class="lead" style="margin:6px 0 0;">Real-time astronomical ephemerides, lunar illumination, and planetary observing guide computed client-side.</p>
+          </div>
+          <div class="sky-live-badge glass">
+            <span class="live-pulse"></span>
+            <span id="sky-utc-time">Loading astronomical time...</span>
+          </div>
+        </div>
+
+        <div class="sky-grid">
+          <!-- 1. Moon Phase Engine -->
+          <article class="sky-card glass spot" data-cursor-area>
+            <div class="sky-card-head">
+              <h3>Lunar Ephemeris</h3>
+              <span class="sky-badge">Live Moon</span>
+            </div>
+            <div class="moon-display">
+              <div id="moon-visual-svg" class="moon-svg-wrap"></div>
+              <div class="moon-meta">
+                <h4 id="moon-phase-name" class="moon-phase-title">Calculating...</h4>
+                <div class="sky-stat-row">
+                  <span class="sky-stat-label">Illumination:</span>
+                  <strong id="moon-illum" class="sky-stat-value">--%</strong>
+                </div>
+                <div class="sky-stat-row">
+                  <span class="sky-stat-label">Lunar Age:</span>
+                  <span id="moon-age" class="sky-stat-sub">-- days</span>
+                </div>
+                <div class="sky-stat-row">
+                  <span class="sky-stat-label">Next Full Moon:</span>
+                  <span id="moon-next-full" class="sky-stat-sub">-- days</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- 2. Naked-Eye Planets Guide -->
+          <article class="sky-card glass spot" data-cursor-area>
+            <div class="sky-card-head">
+              <h3>Visible Planets</h3>
+              <span class="sky-badge">Naked-Eye & Binoculars</span>
+            </div>
+            <div class="planets-list">
+              <div class="planet-row">
+                <div class="planet-icon" style="background: radial-gradient(circle, #e3c498, #9e7546);"></div>
+                <div class="planet-info">
+                  <strong>Jupiter <span class="planet-mag">Mag -2.5</span></strong>
+                  <p>Prominent high in Gemini/Taurus • 4 Galilean moons visible</p>
+                </div>
+                <span class="planet-time">20:30 – Dawn</span>
+              </div>
+              <div class="planet-row">
+                <div class="planet-icon" style="background: radial-gradient(circle, #fff3cf, #d2a13e);"></div>
+                <div class="planet-info">
+                  <strong>Venus <span class="planet-mag">Mag -4.0</span></strong>
+                  <p>Brilliant evening star • Low in South-West at dusk</p>
+                </div>
+                <span class="planet-time">Dusk (18:00–19:30)</span>
+              </div>
+              <div class="planet-row">
+                <div class="planet-icon" style="background: radial-gradient(circle, #ead39c, #8c7847);"></div>
+                <div class="planet-info">
+                  <strong>Saturn <span class="planet-mag">Mag +0.7</span></strong>
+                  <p>In Aquarius • Rings visible through small telescope</p>
+                </div>
+                <span class="planet-time">19:00 – 23:00</span>
+              </div>
+              <div class="planet-row">
+                <div class="planet-icon" style="background: radial-gradient(circle, #f07b53, #993717);"></div>
+                <div class="planet-info">
+                  <strong>Mars <span class="planet-mag">Mag +0.1</span></strong>
+                  <p>Rising late evening in Cancer • Distinct red hue</p>
+                </div>
+                <span class="planet-time">22:30 – Dawn</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 3. Major Astronomical Event Countdown -->
+          <article class="sky-card glass spot" data-cursor-area>
+            <div class="sky-card-head">
+              <h3>Next Major Event</h3>
+              <span class="sky-badge" style="border-color:rgba(0,210,255,.4); color:#00d2ff;">Countdown</span>
+            </div>
+            <div class="event-cd-wrap">
+              <h4 class="event-cd-title">Geminids Meteor Shower Peak</h4>
+              <p class="event-cd-sub">The king of meteor showers, producing up to 120 multicolored meteors per hour at peak activity.</p>
+              
+              <div class="countdown-grid">
+                <div class="cd-box glass">
+                  <span id="cd-days" class="cd-val">00</span>
+                  <span class="cd-lbl">Days</span>
+                </div>
+                <div class="cd-box glass">
+                  <span id="cd-hours" class="cd-val">00</span>
+                  <span class="cd-lbl">Hours</span>
+                </div>
+                <div class="cd-box glass">
+                  <span id="cd-mins" class="cd-val">00</span>
+                  <span class="cd-lbl">Mins</span>
+                </div>
+                <div class="cd-box glass">
+                  <span id="cd-secs" class="cd-val">00</span>
+                  <span class="cd-lbl">Secs</span>
+                </div>
+              </div>
+
+              <div class="stargaze-tip">
+                <span><strong>Observing Tip:</strong> Best viewed after midnight away from light pollution. No telescope needed.</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ===== COMMUNITY ================================================== -->
+    <!-- Member count and date come from assets/js/site.js (discord.members, discord.asOf).
+         Each row hides itself until its link is filled in there. -->
+    <section class="community">
+      <div class="wrap community-grid">
+
+        <div>
+          <h2>Find us online</h2>
+          <p class="lead">Our Discord community has grown to <span data-site="members">88</span> members as of <span data-site="membersDate">August 2026</span>. It is a space for discussion, project coordination, opportunities and hackathon participation.</p>
+          <a class="btn btn-primary" data-link="discord" href="#">Join the Discord</a>
+        </div>
+
+        <ul class="rows glass spot">
+          <li>
+            <a data-link="discord" href="#">
+              <span class="r-name">Discord</span>
+              <span class="r-meta">Community and projects</span>
+              <svg viewBox="0 0 8 14" fill="none" aria-hidden="true"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </li>
+          <li>
+            <a data-link="youtube" href="#">
+              <span class="r-name">YouTube</span>
+              <span class="r-meta">@CelestaAstronomyClub</span>
+              <svg viewBox="0 0 8 14" fill="none" aria-hidden="true"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </li>
+          <li>
+            <a data-link="instagram" href="#">
+              <span class="r-name">Instagram</span>
+              <span class="r-meta">@celestaastronomy</span>
+              <svg viewBox="0 0 8 14" fill="none" aria-hidden="true"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </li>
+          <li>
+            <a data-link="linkedin" href="#">
+              <span class="r-name">LinkedIn</span>
+              <span class="r-meta">Celesta Club</span>
+              <svg viewBox="0 0 8 14" fill="none" aria-hidden="true"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </li>
+          <li>
+            <a data-link="devpost" href="#">
+              <span class="r-name">Devpost</span>
+              <span class="r-meta">Projects and hackathons</span>
+              <svg viewBox="0 0 8 14" fill="none" aria-hidden="true"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </li>
+        </ul>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer. Built by assets/js/site.js. -->
+  <footer data-layout="footer"></footer>
+</body>
+</html>

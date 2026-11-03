@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  <title>Members | Celesta</title>
+  <meta name="description" content="The students who lead and build Celesta: leads, members and interns, plus a Discord community of 80+ where participation goes beyond membership.">
+  <meta name="theme-color" content="#03060d">
+
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+
+  <!-- Link previews: see the note about the full image address in index.html -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Celesta">
+  <meta property="og:title" content="Members | Celesta">
+  <meta property="og:description" content="The students who lead and build Celesta, and the community around them.">
+  <meta property="og:image" content="assets/img/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="assets/data/club-data.js"></script>
+  <script src="assets/js/site.js" defer></script>
+</head>
+
+<body data-page="members">
+  <a class="skip" href="#main">Skip to content</a>
+
+  <!-- Navigation. Built by assets/js/site.js. -->
+  <header data-layout="header"></header>
+
+  <main id="main">
+
+    <!-- ===== PAGE HEADER ================================================ -->
+    <section class="page-head">
+      <!-- Orbit lines, decorative only -->
+      <svg class="orbits" viewBox="-1100 -520 2200 1040" width="2200" height="1040" aria-hidden="true" focusable="false">
+        <defs>
+          <radialGradient id="orbit-fade" cx="0" cy="0" r="1000" gradientUnits="userSpaceOnUse">
+            <stop offset="0.28" stop-color="#e6e0d1" stop-opacity=".27"/>
+            <stop offset="1" stop-color="#e6e0d1" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <g transform="rotate(-14)">
+          <ellipse rx="420" ry="132" pathLength="1"/>
+          <ellipse rx="640" ry="200" pathLength="1"/>
+          <ellipse rx="900" ry="282" pathLength="1"/>
+          <circle r="3" fill="#e6e0d1">
+            <animateMotion dur="120s" begin="-45s" repeatCount="indefinite" path="M640 0 A640 200 0 1 1 -640 0 A640 200 0 1 1 640 0"/>
+          </circle>
+        </g>
+      </svg>
+
+      <div class="wrap">
+        <h1>Meet the members</h1>
+        <p class="lead">The students who lead and build Celesta, and the community around them.</p>
+      </div>
+    </section>
+
+
+    <!-- ===== PEOPLE ===================================================== -->
+    <!-- Each person is one card, three to a row. Clicking a card opens a pop-up.
+         To add a person, copy one <article> block into the right group and change the name and title.
+         Photo: put <img src="assets/img/members/name.jpg" alt="Full name"> inside the square .avatar box
+         (and delete aria-hidden="true" on that box).
+         Short introduction (optional): add <p>Text</p> inside the [data-modal-more] block, after the badge.
+         Badges: badge--gold is for Lead, badge--silver for Member, badge--bronze for Intern. -->
+    <section class="listing">
+      <div class="wrap">
+
+        <div class="tier-block">
+          <h2 class="tier">Leads</h2>
+          <div class="card-grid card-grid--3">
+          <article class="member glass spot" data-modal="member" data-cursor-area>
+            <div class="avatar" data-modal-media><img src="assets/img/members/aradhya.jpeg" alt="Aradhya Haldikar"></div>
+            <div class="m-text">
+              <h3 class="m-name"><button class="card-open" type="button" data-modal-title>Aradhya Haldikar</button></h3>
+              <p class="m-title" data-modal-kind>President</p>
+              <span class="badge badge--gold">Lead</span>
+            </div>
+            <div data-modal-more hidden>
+              <span class="badge badge--gold">Lead</span>
+              <p>Leading research in deterministic N-body orbital simulations and ballistic flyby sensitivity.</p>
+            </div>
+          </article>
+          <article class="member glass spot" data-modal="member" data-cursor-area>
+            <div class="avatar" data-modal-media><img src="assets/img/members/mrunal.jpeg" alt="Mrunal Sayam"></div>
+            <div class="m-text">
+              <h3 class="m-name"><button class="card-open" type="button" data-modal-title>Mrunal Sayam</button></h3>
+              <p class="m-title" data-modal-kind>Joint Vice President</p>
+              <span class="badge badge--gold">Lead</span>
+            </div>
+            <div data-modal-more hidden>
+              <span class="badge badge--gold">Lead</span>
+              <p>Directing club initiatives, large-scale hackathons, and nationwide student outreach.</p>
+            </div>
+          </article>
+          <article class="member glass spot" data-modal="member" data-cursor-area>
+            <div class="avatar" data-modal-media><img src="assets/img/members/arnav.jpeg" alt="Arnav Venkatesh"></div>
+            <div class="m-text">
+              <h3 class="m-name"><button class="card-open" type="button" data-modal-title>Arnav Venkatesh</button></h3>
+              <p class="m-title" data-modal-kind>Joint Vice President</p>
+              <span class="badge badge--gold">Lead</span>
+            </div>
+            <div data-modal-more hidden>
+              <span class="badge badge--gold">Lead</span>
+              <p>Specializing in computational astrodynamics, trajectory sensitivity models, and research publications.</p>
+            </div>
+          </article>
+          <article class="member glass spot" data-modal="member" data-cursor-area>
+            <div class="avatar" data-modal-media><img src="assets/img/members/shakthivel.jpeg" alt="Shakthivel Karthik"></div>
+            <div class="m-text">
+              <h3 class="m-name"><button class="card-open" type="button" data-modal-title>Shakthivel Karthik</button></h3>
+              <p class="m-title" data-modal-kind>Technical Lead</p>
+              <span class="badge badge--gold">Lead</span>
+            </div>
+            <div data-modal-more hidden>
+              <span class="badge badge--gold">Lead</span>
+              <p>Architecting Celesta's technical platforms, astronomy conversational engines, and web infrastructure.</p>
+            </div>
+          </article>
+          <article class="member glass spot" data-modal="member" data-cursor-area>
+            <div class="avatar" data-modal-media><img src="assets/img/members/def1.png" alt="Manveer Plaha"></div>
+            <div class="m-text">
+              <h3 class="m-name"><button class="card-open" type="button" data-modal-title>Manveer Plaha</button></h3>
+              <p class="m-title" data-modal-kind>Social Media Lead</p>
+              <span class="badge badge--gold">Lead</span>
+            </div>
+            <div data-modal-more hidden>
+              <span class="badge badge--gold">Lead</span>
+              <p>Broadcasting astronomy insights and managing Celesta's public outreach initiatives.</p>
+            </div>
+          </article>
+          <article class="member glass spot" data-modal="member" data-cursor-area>
+            <div class="avatar" data-modal-media><img src="assets/img/members/def2.png" alt="Aya Saadaoui"></div>
+            <div class="m-text">
+              <h3 class="m-name"><button class="card-open" type="button" data-modal-title>Aya Saadaoui</button></h3>
+              <p class="m-title" data-modal-kind>Social Media Lead</p>
+              <span class="badge badge--gold">Lead</span>
+            </div>
+            <div data-modal-more hidden>
+              <span class="badge badge--gold">Lead</span>
+              <p>Connecting international astronomy enthusiasts and producing creative visual science content.</p>
+            </div>
+          </article>
+          </div>
+        </div>
+
+        <div class="tier-block">
+          <h2 class="tier">Members</h2>
+          <div class="card-grid card-grid--3">
+          <article class="member glass spot" data-modal="member" data-cursor-area>
+            <div class="avatar" data-modal-media><img src="assets/img/members/nayla.jpeg" alt="Nayla"></div>
+            <div class="m-text">
+              <h3 class="m-name"><button class="card-open" type="button" data-modal-title>Nayla</button></h3>
+              <p class="m-title" data-modal-kind>Member</p>
+              <span class="badge badge--silver">Member</span>
+            </div>
+            <div data-modal-more hidden>
+              <span class="badge badge--silver">Member</span>
+              <p>Analyzing gravitational flyby geometries and trajectory datasets.</p>
+            </div>
+          </article>
+          <article class="member glass spot" data-modal="member" data-cursor-area>
+            <div class="avatar" data-modal-media><img src="assets/img/members/def2.png" alt="Samritha K"></div>
+            <div class="m-text">
+              <h3 class="m-name"><button class="card-open" type="button" data-modal-title>Samritha K</button></h3>
+              <p class="m-title" data-modal-kind>Member</p>
+              <span class="badge badge--silver">Member</span>
+            </div>
+            <div data-modal-more hidden>
+              <span class="badge badge--silver">Member</span>
+              <p>Facilitating live telescope nights, sky charting, and Stellarium planetarium sessions.</p>
+            </div>
+          </article>
+
+          <!-- Interns -->
+          <article class="member glass spot" data-modal="member" data-cursor-area>
+            <div class="avatar" data-modal-media><img src="assets/img/members/def1.png" alt="Hritesh Srivastava"></div>
+            <div class="m-text">
+              <h3 class="m-name"><button class="card-open" type="button" data-modal-title>Hritesh Srivastava</button></h3>
+              <p class="m-title" data-modal-kind>Intern</p>
+              <span class="badge badge--bronze">Intern</span>
+            </div>
+            <div data-modal-more hidden>
+              <span class="badge badge--bronze">Intern</span>
+              <p>Assisting on astrodynamic data pipelines and simulation test suites.</p>
+            </div>
+          </article>
+          <article class="member glass spot" data-modal="member" data-cursor-area>
+            <div class="avatar" data-modal-media><img src="assets/img/members/def1.png" alt="Ojaswee Upadhyay"></div>
+            <div class="m-text">
+              <h3 class="m-name"><button class="card-open" type="button" data-modal-title>Ojaswee Upadhyay</button></h3>
+              <p class="m-title" data-modal-kind>Intern</p>
+              <span class="badge badge--bronze">Intern</span>
+            </div>
+            <div data-modal-more hidden>
+              <span class="badge badge--bronze">Intern</span>
+              <p>Studying transit light curves and participating in candidate exoplanet filtering.</p>
+            </div>
+          </article>
+          <article class="member glass spot" data-modal="member" data-cursor-area>
+            <div class="avatar" data-modal-media><img src="assets/img/members/def1.png" alt="Somula Venkata Varshith Reddy"></div>
+            <div class="m-text">
+              <h3 class="m-name"><button class="card-open" type="button" data-modal-title>Somula Venkata Varshith Reddy</button></h3>
+              <p class="m-title" data-modal-kind>Intern</p>
+              <span class="badge badge--bronze">Intern</span>
+            </div>
+            <div data-modal-more hidden>
+              <span class="badge badge--bronze">Intern</span>
+              <p>Developing technical documentation and participating in club research initiatives.</p>
+            </div>
+          </article>
+          <article class="member glass spot" data-modal="member" data-cursor-area>
+            <div class="avatar" data-modal-media><img src="assets/img/members/def2.png" alt="Jharna Saxena"></div>
+            <div class="m-text">
+              <h3 class="m-name"><button class="card-open" type="button" data-modal-title>Jharna Saxena</button></h3>
+              <p class="m-title" data-modal-kind>Intern</p>
+              <span class="badge badge--bronze">Intern</span>
+            </div>
+            <div data-modal-more hidden>
+              <span class="badge badge--bronze">Intern</span>
+              <p>Processing deep-sky astro-imagery and night sky observational logs.</p>
+            </div>
+          </article>
+          <article class="member glass spot" data-modal="member" data-cursor-area>
+            <div class="avatar" data-modal-media><img src="assets/img/members/def1.png" alt="Lokesh Saravanan"></div>
+            <div class="m-text">
+              <h3 class="m-name"><button class="card-open" type="button" data-modal-title>Lokesh Saravanan</button></h3>
+              <p class="m-title" data-modal-kind>Intern</p>
+              <span class="badge badge--bronze">Intern</span>
+            </div>
+            <div data-modal-more hidden>
+              <span class="badge badge--bronze">Intern</span>
+              <p>Engineering Python scripts and tools for orbit visualization.</p>
+            </div>
+          </article>
+          <article class="member glass spot" data-modal="member" data-cursor-area>
+            <div class="avatar" data-modal-media><img src="assets/img/members/def1.png" alt="Shashank Shekhar"></div>
+            <div class="m-text">
+              <h3 class="m-name"><button class="card-open" type="button" data-modal-title>Shashank Shekhar</button></h3>
+              <p class="m-title" data-modal-kind>Intern</p>
+              <span class="badge badge--bronze">Intern</span>
+            </div>
+            <div data-modal-more hidden>
+              <span class="badge badge--bronze">Intern</span>
+              <p>Applying machine learning algorithms to photometric time-series exoplanet data.</p>
+            </div>
+          </article>
+          <article class="member glass spot" data-modal="member" data-cursor-area>
+            <div class="avatar" data-modal-media><img src="assets/img/members/def1.png" alt="Prathik Arunkumar"></div>
+            <div class="m-text">
+              <h3 class="m-name"><button class="card-open" type="button" data-modal-title>Prathik Arunkumar</button></h3>
+              <p class="m-title" data-modal-kind>Intern</p>
+              <span class="badge badge--bronze">Intern</span>
+            </div>
+            <div data-modal-more hidden>
+              <span class="badge badge--bronze">Intern</span>
+              <p>Cross-validating simulated planetary ephemerides and research benchmarks.</p>
+            </div>
+          </article>
+          <article class="member glass spot" data-modal="member" data-cursor-area>
+            <div class="avatar" data-modal-media><img src="assets/img/members/def1.png" alt="Madhav Vashistha"></div>
+            <div class="m-text">
+              <h3 class="m-name"><button class="card-open" type="button" data-modal-title>Madhav Vashistha</button></h3>
+              <p class="m-title" data-modal-kind>Intern</p>
+              <span class="badge badge--bronze">Intern</span>
+            </div>
+            <div data-modal-more hidden>
+              <span class="badge badge--bronze">Intern</span>
+              <p>Testing celestial dynamics algorithms and compiling observational archives.</p>
+            </div>
+          </article>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ===== ALUMNI & HALL OF FAME ====================================== -->
+    <section class="listing">
+      <div class="wrap">
+        <div class="tier-block">
+          <div style="display:flex; align-items:baseline; justify-content:space-between; flex-wrap:wrap; gap:8px; margin-bottom:18px;">
+            <h2 class="tier" style="margin:0;">Alumni & Hall of Fame</h2>
+            <p style="color:var(--cream-dim); font-size:14.5px; margin:0;">Honoring past leads, co-authors, and pivotal contributors to Celesta's research milestones.</p>
+          </div>
+          <div class="card-grid card-grid--3" id="alumni-grid">
+            <article class="member glass spot" data-modal="member" data-cursor-area>
+              <div class="avatar" data-modal-media><img src="assets/img/members/def1.png" alt="Harsh Agrawal"></div>
+              <div class="m-text">
+                <h3 class="m-name"><button class="card-open" type="button" data-modal-title>Harsh Agrawal</button></h3>
+                <p class="m-title" data-modal-kind>Co-Author & Contributor (2025–2026)</p>
+                <span class="badge" style="background:rgba(255,255,255,.08); color:var(--cream); border-color:rgba(255,255,255,.2); font-size:12px;">Alumnus</span>
+              </div>
+              <div data-modal-more hidden>
+                <span class="badge" style="background:rgba(255,255,255,.08); color:var(--cream);">Alumnus (2025–2026)</span>
+                <p style="margin-top:12px;"><strong>Key Contributions:</strong> Contributed to ballistic trajectory sensitivity analysis and co-authored Celesta's research preprint on Jupiter gravity assists published on Zenodo (DOI: 10.5281/zenodo.23809604).</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ===== DISCORD COMMUNITY ========================================== -->
+    <!-- The whole card is a link. The address is set in assets/js/site.js (links.discord). -->
+    <section class="listing">
+      <div class="wrap">
+        <div class="card-grid card-grid--3">
+          <a class="member member--wide glass spot" data-link="discord" href="#" data-cursor-area>
+            <div class="avatar" aria-hidden="true">
+              <svg viewBox="0 0 92 92" fill="none">
+                <g stroke="rgba(230,224,209,.24)" stroke-width="1">
+                  <line x1="30" y1="46" x2="18" y2="22"/><line x1="30" y1="46" x2="58" y2="42"/>
+                  <line x1="58" y1="42" x2="70" y2="24"/><line x1="30" y1="46" x2="42" y2="70"/>
+                  <line x1="42" y1="70" x2="68" y2="74"/>
+                </g>
+                <g fill="#e6e0d1">
+                  <circle cx="18" cy="22" r="2.4" fill-opacity=".9"/><circle cx="44" cy="14" r="1.6" fill-opacity=".6"/>
+                  <circle cx="70" cy="24" r="2.8" fill-opacity=".95"/><circle cx="30" cy="46" r="3.2"/>
+                  <circle cx="58" cy="42" r="2" fill-opacity=".7"/><circle cx="80" cy="52" r="1.8" fill-opacity=".6"/>
+                  <circle cx="14" cy="64" r="1.8" fill-opacity=".55"/><circle cx="42" cy="70" r="2.6" fill-opacity=".85"/>
+                  <circle cx="68" cy="74" r="3" fill-opacity=".9"/><circle cx="24" cy="84" r="1.4" fill-opacity=".5"/>
+                  <circle cx="84" cy="80" r="1.5" fill-opacity=".5"/><circle cx="52" cy="26" r="1.2" fill-opacity=".5"/>
+                  <circle cx="8" cy="40" r="1.2" fill-opacity=".45"/><circle cx="76" cy="10" r="1.2" fill-opacity=".45"/>
+                </g>
+              </svg>
+            </div>
+            <div class="m-text">
+              <h3 class="m-name">80+ strong Discord community</h3>
+              <p class="m-title">Participation goes beyond membership</p>
+            </div>
+            <svg class="chev" viewBox="0 0 8 14" fill="none" aria-hidden="true"><path d="M1 1l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ===== CONTRIBUTOR & PLANET HUNTERS TESS LEADERBOARD ============== -->
+    <section class="listing" id="leaderboard">
+      <div class="wrap">
+        <div class="leaderboard-panel glass spot">
+          <div class="leaderboard-head">
+            <div>
+              <h2>Planet Hunters TESS & Research Leaderboard</h2>
+              <p style="color:var(--cream-dim); margin:8px 0 0; max-width:680px; font-size:15.5px; line-height:1.5;">
+                Celesta members earn research points through citizen science light curve classifications on NASA/Zooniverse Planet Hunters TESS and active computational research.
+              </p>
+              <div class="leaderboard-tiers-legend">
+                <span class="tier-legend-pill">Supernova (300+ pts)</span>
+                <span class="tier-legend-pill">Pulsar (200–299 pts)</span>
+                <span class="tier-legend-pill">Orbiter (100–199 pts)</span>
+                <span class="tier-legend-pill">Stargazer (0–99 pts)</span>
+              </div>
+            </div>
+            <a href="https://www.zooniverse.org/projects/nora-dot-eisner/planet-hunters-tess" target="_blank" rel="noopener" class="btn btn-primary" style="white-space:nowrap;">
+              Classify on Planet Hunters TESS ↗
+            </a>
+          </div>
+
+          <div class="leaderboard-list" id="leaderboard-list">
+            <!-- Dynamically populated and sorted from window.CELESTA_DATA.members -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ===== APPLY ====================================================== -->
+    <!-- The button opens the form set in assets/js/site.js (links.internship). -->
+    <section class="listing listing--last">
+      <div class="wrap">
+        <div class="cta glass spot">
+          <div>
+            <h2>Apply for an internship</h2>
+            <p class="lead">Rolling admissions. No restrictions, just a passion to volunteer.</p>
+          </div>
+          <a class="btn btn-primary" data-link="internship" href="https://forms.gle/NvyiH7amfoEnEa2b7">Apply now</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer. Built by assets/js/site.js. -->
+  <footer data-layout="footer"></footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const container = document.getElementById("leaderboard-list");
+      if (!container || !window.CELESTA_DATA || !Array.isArray(window.CELESTA_DATA.members)) return;
+
+      const members = [...window.CELESTA_DATA.members].sort((a, b) => (b.points || 0) - (a.points || 0));
+
+      const getTier = (pts) => {
+        if (pts >= 300) return { icon: "🌟", name: "Supernova" };
+        if (pts >= 200) return { icon: "⚡", name: "Pulsar" };
+        if (pts >= 100) return { icon: "🪐", name: "Orbiter" };
+        return { icon: "🔭", name: "Stargazer" };
+      };
+
+      container.innerHTML = members.map((m, idx) => {
+        const rank = idx + 1;
+        const rankClass = rank === 1 ? "lb-rank lb-rank--1" : (rank === 2 ? "lb-rank lb-rank--2" : (rank === 3 ? "lb-rank lb-rank--3" : "lb-rank"));
+        const tier = getTier(m.points || 0);
+        const avatar = m.avatar || (m.gender === "female" ? "assets/img/members/def2.png" : "assets/img/members/def1.png");
+
+        return `
+          <div class="lb-row">
+            <div class="${rankClass}">#${rank}</div>
+            <div class="lb-avatar">
+              <img src="${avatar}" alt="${m.name}" loading="lazy">
+            </div>
+            <div class="lb-info">
+              <h4 class="lb-name">${m.name}</h4>
+              <p class="lb-sub">
+                <span>${m.role}</span>
+                <span>•</span>
+                <span>${tier.icon} ${tier.name}</span>
+              </p>
+            </div>
+            <div class="lb-stats">
+              <div class="lb-stat-box">
+                <span class="lb-stat-val">${m.tessClassifications || 0}</span>
+                <span class="lb-stat-lbl">TESS Curves</span>
+              </div>
+              <div class="lb-stat-box">
+                <span class="lb-stat-val" style="color:var(--gold,#f2d98f);">${m.points || 0}</span>
+                <span class="lb-stat-lbl">Points</span>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join("");
+    });
+  </script>
+</body>
+</html>
