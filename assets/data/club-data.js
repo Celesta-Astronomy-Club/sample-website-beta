@@ -1,9 +1,3 @@
-/* ==========================================================================
-   CELESTA | Central Club Data Store
-   Managed via Moderator Studio (admin.html) or edited directly.
-   Last updated: 2026-11-03T17:27:01.215Z
-   ========================================================================== */
-
 window.CELESTA_DATA = {
   "salt": "celesta_astro_2026",
   "members": [
@@ -104,20 +98,6 @@ window.CELESTA_DATA = {
       "clubIdHash": "cf1518f97cfce5e5f385c88c03c58ceba41bb334208a0cb8bbfbb1e58f0dd876",
       "points": 180,
       "tessClassifications": 40
-    },
-    {
-      "id": "samritha-k",
-      "name": "Samritha K",
-      "firstName": "Samritha",
-      "role": "Ex. Social Media Lead",
-      "tier": "intern",
-      "avatar": "assets/img/members/def2.png",
-      "gender": "female",
-      "joinYear": 2025,
-      "active": false,
-      "clubIdHash": "32675688a44b9b003a2254359ae2c676239feff02f45ea05537617c09d57a268",
-      "points": 160,
-      "tessClassifications": 30
     },
     {
       "id": "hritesh-srivastava",
@@ -295,28 +275,38 @@ window.CELESTA_DATA = {
       "avatar": "assets/img/members/def1.png",
       "gender": "male",
       "contributions": "Contributed to trajectory analysis and co-authored the Jupiter ballistic gravity assist preprint."
+    },
+    {
+      "id": "samritha-k",
+      "name": "Samritha K",
+      "role": "Ex. Social Media Lead",
+      "tenure": "2025–2026",
+      "avatar": "assets/img/members/def2.png",
+      "gender": "female",
+      "clubIdHash": "32675688a44b9b003a2254359ae2c676239feff02f45ea05537617c09d57a268",
+      "contributions": "Stellarium Guidance, Observational Astronomy, and Celesta Workshop Day 1 speaker."
     }
   ],
   "leaderboardTiers": [
     {
       "name": "Supernova",
       "minPoints": 300,
-      "icon": "🌟"
+      "icon": "\ud83c\udf1f"
     },
     {
       "name": "Pulsar",
       "minPoints": 200,
-      "icon": "⚡"
+      "icon": "\u26a1"
     },
     {
       "name": "Orbiter",
       "minPoints": 100,
-      "icon": "🪐"
+      "icon": "\ud83e\ude90"
     },
     {
       "name": "Stargazer",
       "minPoints": 0,
-      "icon": "🔭"
+      "icon": "\ud83d\udd2d"
     }
   ]
 };

@@ -80,6 +80,7 @@
                   <option value="lead">Lead (Gold)</option>
                   <option value="member">Member (Silver)</option>
                   <option value="intern" selected>Intern (Bronze)</option>
+                  <option value="alumni">Alumni (Hall of Fame)</option>
                 </select>
               </div>
 
@@ -359,8 +360,30 @@
       function renderMembers() {
         var activeList = document.getElementById("list-active-members");
         var alumniList = document.getElementById("list-alumni-members");
+
+        // Clean migration: any inactive members in data.members are properly moved into data.alumni
+        if (!Array.isArray(data.alumni)) data.alumni = [];
+        var inactives = data.members.filter(m => m.active === false);
+        if (inactives.length) {
+          inactives.forEach(m => {
+            if (!data.alumni.some(a => a.id === m.id)) {
+              data.alumni.push({
+                id: m.id,
+                name: m.name,
+                role: m.role ? (m.role.startsWith("Ex.") || m.role.startsWith("Former") ? m.role : "Former " + m.role) : "Alumni Contributor",
+                tenure: (m.joinYear || 2025) + "–" + new Date().getFullYear(),
+                avatar: m.avatar || "assets/img/members/def1.png",
+                gender: m.gender || (m.avatar && m.avatar.includes("def2") ? "female" : "male"),
+                clubIdHash: m.clubIdHash || "",
+                contributions: m.role || "Former Contributor"
+              });
+            }
+          });
+          data.members = data.members.filter(m => m.active !== false);
+        }
+
         var activeMembers = data.members.filter(m => m.active !== false);
-        var alumniMembers = data.members.filter(m => m.active === false).concat(data.alumni || []);
+        var alumniMembers = data.alumni || [];
 
         document.getElementById("count-active").textContent = activeMembers.length;
         document.getElementById("count-alumni").textContent = alumniMembers.length;
@@ -391,14 +414,15 @@
             <div class="admin-item-info">
               <img src="${a.avatar || 'assets/img/members/def1.png'}" alt="${a.name}" class="admin-item-avatar">
               <div>
-                <p class="admin-item-name">${a.name} <span class="badge badge--bronze">Alumni</span></p>
+                <p class="admin-item-name">${a.name} <span class="badge" style="background:rgba(255,255,255,.08); color:var(--cream); border-color:rgba(255,255,255,.2); font-size:11px;">${a.gender === 'female' ? 'Alumna' : 'Alumnus'}</span></p>
                 <div class="admin-item-meta">
-                  <span>${a.tenure || 'Former Contributor'}</span>
+                  <span>${a.role || 'Former Contributor'} (${a.tenure || '2025–2026'})</span>
                   ${a.contributions ? `<span>— ${a.contributions}</span>` : ''}
                 </div>
               </div>
             </div>
             <div class="admin-item-actions">
+              <button type="button" class="btn btn-glass glass btn-sm" onclick="editAlumni('${a.id}')">Edit</button>
               <button type="button" class="btn btn-glass glass btn-sm" onclick="restoreMember('${a.id}')">Make Active</button>
               <button type="button" class="btn btn-glass glass btn-sm" style="color:#ff8585;" onclick="deleteAlumni('${a.id}')">Delete</button>
             </div>
@@ -445,40 +469,111 @@
         data.members = data.members.filter(m => m.id !== id);
         renderMembers();
         renderLeaderboard();
+        updateCodePreview();
         toast("Member removed.");
       };
 
       window.toggleAlumni = function (id) {
-        var m = data.members.find(x => x.id === id);
-        if (!m) return;
-        m.active = false;
+        var mIdx = data.members.findIndex(x => x.id === id);
+        if (mIdx < 0) return;
+        var m = data.members[mIdx];
+
+        var currentYear = new Date().getFullYear();
+        var defaultTenure = (m.joinYear || 2025) + "–" + currentYear;
+        var tenure = prompt("Enter tenure period for " + m.name + ":", defaultTenure);
+        if (tenure === null) return;
+
+        var defaultRole = m.role ? (m.role.startsWith("Ex.") || m.role.startsWith("Former") ? m.role : "Former " + m.role) : "Former Contributor";
+        var role = prompt("Enter Alumni Title/Role for " + m.name + ":", defaultRole);
+        if (role === null) return;
+
+        var defaultContrib = "Former " + (m.role || "Lead") + " and key contributor to Celesta initiatives.";
+        var contributions = prompt("Enter key contributions / achievements for " + m.name + ":", defaultContrib);
+        if (contributions === null) return;
+
+        // Remove from members
+        data.members.splice(mIdx, 1);
+
+        // Ensure alumni array exists
+        if (!Array.isArray(data.alumni)) data.alumni = [];
+
+        // Remove duplicate if already present in alumni
+        data.alumni = data.alumni.filter(a => a.id !== m.id);
+
+        // Push to alumni
+        data.alumni.push({
+          id: m.id,
+          name: m.name,
+          role: role.trim() || defaultRole,
+          tenure: tenure.trim() || defaultTenure,
+          avatar: m.avatar || "assets/img/members/def1.png",
+          gender: m.gender || (m.avatar && m.avatar.includes("def2") ? "female" : "male"),
+          clubIdHash: m.clubIdHash || "",
+          contributions: contributions.trim() || defaultContrib
+        });
+
         renderMembers();
-        toast(m.name + " moved to Alumni.");
+        renderLeaderboard();
+        updateCodePreview();
+        toast(m.name + " moved to Alumni Hall!");
+      };
+
+      window.editAlumni = function (id) {
+        var a = (data.alumni || []).find(x => x.id === id);
+        if (!a) return;
+        var newRole = prompt("Edit Former Role for " + a.name + ":", a.role || "Former Contributor");
+        if (newRole === null) return;
+        var newTenure = prompt("Edit Tenure period for " + a.name + ":", a.tenure || "2025–2026");
+        if (newTenure === null) return;
+        var newContrib = prompt("Edit Key Contributions for " + a.name + ":", a.contributions || "");
+        if (newContrib === null) return;
+
+        a.role = newRole.trim();
+        a.tenure = newTenure.trim();
+        a.contributions = newContrib.trim();
+
+        renderMembers();
+        updateCodePreview();
+        toast(a.name + " alumni details updated!");
       };
 
       window.restoreMember = function (id) {
-        var m = data.members.find(x => x.id === id);
-        if (m) {
-          m.active = true;
+        if (!Array.isArray(data.alumni)) data.alumni = [];
+        var aIdx = data.alumni.findIndex(x => x.id === id);
+        var memberToAdd = null;
+
+        if (aIdx >= 0) {
+          var a = data.alumni.splice(aIdx, 1)[0];
+          var cleanRole = (a.role || "Member").replace(/^(Ex\.|Former)\s+/i, "");
+          memberToAdd = {
+            id: a.id,
+            name: a.name,
+            firstName: a.name.split(" ")[0],
+            role: cleanRole || "Member",
+            tier: cleanRole.toLowerCase().includes("lead") ? "lead" : "member",
+            avatar: a.avatar || "assets/img/members/def1.png",
+            gender: a.gender || "male",
+            joinYear: parseInt((a.tenure || "2025").slice(0, 4), 10) || 2025,
+            active: true,
+            clubIdHash: a.clubIdHash || "",
+            points: 100,
+            tessClassifications: 20
+          };
         } else {
-          var aIdx = (data.alumni || []).findIndex(x => x.id === id);
-          if (aIdx >= 0) {
-            var a = data.alumni.splice(aIdx, 1)[0];
-            data.members.push({
-              id: a.id,
-              name: a.name,
-              firstName: a.name.split(" ")[0],
-              role: a.role || "Member",
-              tier: "member",
-              avatar: a.avatar || "assets/img/members/def1.png",
-              active: true,
-              joinYear: 2025,
-              points: 100,
-              tessClassifications: 20
-            });
+          var m = data.members.find(x => x.id === id);
+          if (m) {
+            m.active = true;
           }
         }
+
+        if (memberToAdd) {
+          data.members = data.members.filter(m => m.id !== memberToAdd.id);
+          data.members.push(memberToAdd);
+        }
+
         renderMembers();
+        renderLeaderboard();
+        updateCodePreview();
         toast("Member restored to active team.");
       };
 
@@ -487,6 +582,7 @@
         data.members = data.members.filter(m => m.id !== id);
         if (data.alumni) data.alumni = data.alumni.filter(a => a.id !== id);
         renderMembers();
+        updateCodePreview();
         toast("Alumni record removed.");
       };
 
@@ -517,7 +613,33 @@
           hash = await sha256(name.replace(/\s+/g, "") + year, data.salt);
         }
 
-        if (existing) {
+        if (tier === "alumni") {
+          if (!Array.isArray(data.alumni)) data.alumni = [];
+          var existingA = data.alumni.find(a => a.id === memberId);
+          var currentYr = new Date().getFullYear();
+          data.members = data.members.filter(m => m.id !== memberId);
+
+          if (existingA) {
+            existingA.name = name;
+            existingA.role = role || "Former Contributor";
+            existingA.avatar = avatar;
+            existingA.gender = mGender.value.includes("2") ? "female" : "male";
+            if (rawId) existingA.clubIdHash = hash;
+            toast("Alumni record for " + name + " updated!");
+          } else {
+            data.alumni.push({
+              id: memberId,
+              name: name,
+              role: role || "Former Contributor",
+              tenure: year + "–" + currentYr,
+              avatar: avatar,
+              gender: mGender.value.includes("2") ? "female" : "male",
+              clubIdHash: hash,
+              contributions: role || "Former Contributor"
+            });
+            toast("Alumni record for " + name + " added!");
+          }
+        } else if (existing) {
           existing.name = name;
           existing.firstName = name.split(" ")[0];
           existing.role = role;
@@ -551,6 +673,7 @@
         mCustomWrap.hidden = true;
         renderMembers();
         renderLeaderboard();
+        updateCodePreview();
       });
 
       // --- RENDER MoMs ---
@@ -578,6 +701,7 @@
         if (!confirm("Delete this meeting archive?")) return;
         data.moms.splice(idx, 1);
         renderMoMs();
+        updateCodePreview();
         toast("Meeting minutes removed.");
       };
 
@@ -606,6 +730,7 @@
 
         document.getElementById("form-mom").reset();
         renderMoMs();
+        updateCodePreview();
         toast("New meeting minutes added!");
       });
 
@@ -652,6 +777,7 @@
         m.tessClassifications = (m.tessClassifications || 0) + count;
         m.points = (m.points || 0) + count;
         renderLeaderboard();
+        updateCodePreview();
         toast("Awarded +" + count + " TESS credits to " + m.firstName + "!");
       };
 

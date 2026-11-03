@@ -41,12 +41,13 @@
     const typed = String(value || "").trim();
     if (!typed) return null;
 
-    // Check encrypted SHA-256 hash in CELESTA_DATA
-    if (window.CELESTA_DATA && Array.isArray(window.CELESTA_DATA.members)) {
+    // Check encrypted SHA-256 hash in CELESTA_DATA (active members and alumni)
+    if (window.CELESTA_DATA && (Array.isArray(window.CELESTA_DATA.members) || Array.isArray(window.CELESTA_DATA.alumni))) {
       try {
         const hash = await sha256Hash(typed, window.CELESTA_DATA.salt);
-        const member = window.CELESTA_DATA.members.find((m) => m.clubIdHash === hash);
-        if (member) return { id: typed, name: member.firstName || member.name, member: member };
+        const member = (window.CELESTA_DATA.members || []).find((m) => m.clubIdHash === hash) ||
+                       (window.CELESTA_DATA.alumni || []).find((a) => a.clubIdHash === hash);
+        if (member) return { id: typed, name: member.firstName || (member.name ? member.name.split(" ")[0] : member.name), member: member };
       } catch (err) { /* fallback */ }
     }
 

@@ -759,8 +759,11 @@ function initModals() {
     }, REDUCED ? 0 : 230);
   }
 
-  cards.forEach((card) => {
-    card.addEventListener("click", (e) => { if (!e.target.closest("a")) open(card); });
+  // Event delegation so both static and dynamically rendered cards open modals
+  document.addEventListener("click", (e) => {
+    const card = e.target.closest("[data-modal]");
+    if (!card || e.target.closest("a") || e.target.closest("dialog")) return;
+    open(card);
   });
   dialog.querySelector(".modal-close").addEventListener("click", close);
   dialog.addEventListener("click", (e) => { if (e.target === dialog) close(); });
