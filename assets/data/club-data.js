@@ -1,7 +1,7 @@
 /* ==========================================================================
    CELESTA | Central Club Data Store
    Managed via Moderator Studio (admin.html) or edited directly.
-   Last updated: 2026-11-04T04:13:26.379Z
+   Last updated: 2026-11-04T04:24:40.312Z
    ========================================================================== */
 
 window.CELESTA_DATA = {
@@ -18,8 +18,8 @@ window.CELESTA_DATA = {
       "joinYear": 2025,
       "active": true,
       "clubIdHash": "b04f89c00947857c394fd449b1b9c5e180814fdae89a3a8b0a607e5334af1c43",
-      "points": 340,
-      "tessClassifications": 85,
+      "points": 540,
+      "tessClassifications": 285,
       "bio": "Leading research in deterministic N-body orbital simulations and ballistic flyby sensitivity."
     },
     {
@@ -33,8 +33,8 @@ window.CELESTA_DATA = {
       "joinYear": 2025,
       "active": true,
       "clubIdHash": "70e5eebe56d281a5a7cad75f7801ae85fb537b969aa0a6e57e44a82301742bae",
-      "points": 290,
-      "tessClassifications": 60,
+      "points": 790,
+      "tessClassifications": 560,
       "bio": "Directing club initiatives, large-scale hackathons, and nationwide student outreach."
     },
     {
@@ -48,8 +48,8 @@ window.CELESTA_DATA = {
       "joinYear": 2025,
       "active": true,
       "clubIdHash": "b1fb7986fb8f56e7b038d15da85e1d8f81c329d1636815e03d026ad1cb8593c8",
-      "points": 320,
-      "tessClassifications": 75,
+      "points": 420,
+      "tessClassifications": 175,
       "bio": "Specializing in computational astrodynamics, trajectory sensitivity models, and research publications."
     },
     {
@@ -153,8 +153,8 @@ window.CELESTA_DATA = {
       "joinYear": 2026,
       "active": true,
       "clubIdHash": "92569116e0e0f31c513ee6382ca251d18f5ae22340277340d3a95843b0c5dd25",
-      "points": 115,
-      "tessClassifications": 20,
+      "points": 515,
+      "tessClassifications": 420,
       "bio": "Developing technical documentation and participating in club research initiatives."
     },
     {
@@ -350,5 +350,5 @@ window.CELESTA_DATA = {
       "icon": "🔭"
     }
   ],
-  "lastUpdated": "2026-11-04T04:13:17.612Z"
+  "lastUpdated": "2026-11-04T04:24:35.251Z"
 };
