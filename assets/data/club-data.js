@@ -1,7 +1,7 @@
 /* ==========================================================================
    CELESTA | Central Club Data Store
    Managed via Moderator Studio (admin.html) or edited directly.
-   Last updated: 2026-11-03T18:15:00.000Z
+   Last updated: 2026-11-04T04:13:26.379Z
    ========================================================================== */
 
 window.CELESTA_DATA = {
@@ -316,6 +316,16 @@ window.CELESTA_DATA = {
       "gender": "male",
       "clubIdHash": "02a0e7070ac8063d8adce7d7a544a89312eb562dbc2b7e74f6587d126cae5457",
       "contributions": "Ex. Research Team Intern"
+    },
+    {
+      "id": "ujjwal-batra",
+      "name": "Ujjwal Batra",
+      "role": "Ex. Intern",
+      "tenure": "2025–2026",
+      "avatar": "assets/img/members/def1.png",
+      "gender": "male",
+      "clubIdHash": "b699bbb793bbd7d21331df2c5c1542f3e290a1053017319d94691b80f0211373",
+      "contributions": "Ex. Intern"
     }
   ],
   "leaderboardTiers": [
@@ -339,5 +349,6 @@ window.CELESTA_DATA = {
       "minPoints": 0,
       "icon": "🔭"
     }
-  ]
+  ],
+  "lastUpdated": "2026-11-04T04:13:17.612Z"
 };
