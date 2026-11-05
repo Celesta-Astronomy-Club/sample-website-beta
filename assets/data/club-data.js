@@ -1,7 +1,7 @@
 /* ==========================================================================
    CELESTA | Central Club Data Store
    Managed via Moderator Studio (admin.html) or edited directly.
-   Last updated: 2026-11-04T04:24:40.312Z
+   Last updated: 2026-11-05T14:48:33.933Z
    ========================================================================== */
 
 window.CELESTA_DATA = {
@@ -231,6 +231,21 @@ window.CELESTA_DATA = {
       "points": 110,
       "tessClassifications": 20,
       "bio": "Testing celestial dynamics algorithms and compiling observational archives."
+    },
+    {
+      "id": "hemaksh-agrawal",
+      "name": "Hemaksh Agrawal",
+      "firstName": "Hemaksh",
+      "role": "Intern",
+      "tier": "intern",
+      "avatar": "assets/img/members/def1.png",
+      "gender": "male",
+      "joinYear": 2026,
+      "bio": "Intern in Celesta, active since 2026.",
+      "active": true,
+      "clubIdHash": "f3c2a63315fc43241a683f5a9f7e4c8e6abfe1f0ed6995c5f4794c446cff2a95",
+      "points": 100,
+      "tessClassifications": 10
     }
   ],
   "moms": [
@@ -350,5 +365,5 @@ window.CELESTA_DATA = {
       "icon": "🔭"
     }
   ],
-  "lastUpdated": "2026-11-04T04:24:35.251Z"
+  "lastUpdated": "2026-11-05T14:48:22.610Z"
 };
